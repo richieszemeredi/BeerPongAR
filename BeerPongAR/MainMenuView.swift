@@ -11,17 +11,16 @@ struct MainMenuView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                
                 VStack {
                     Text("BeerPongAR").font(.system(size: 50)).padding(50)
                     Spacer()
                     VStack{
-                        NavigationLink("I have a table to play on", destination: GameView(withTable: false))
+                        NavigationLink("Singleplayer", destination: TableSelectView(multiplayer: false))
                             .padding(10)
                             .navigationBarTitle("")
                             .navigationBarHidden(true)
                         
-                        NavigationLink("I don't have a table", destination: GameView(withTable: true))
+                        NavigationLink("Multiplayer", destination: TableSelectView(multiplayer: true))
                             .padding(10)
                             .navigationBarTitle("")
                             .navigationBarHidden(true)

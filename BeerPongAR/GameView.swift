@@ -15,33 +15,71 @@ var collisionSubscribing:Cancellable?
 
 struct GameView : View {
     @State var withTable: Bool
+    @State var multiplayer: Bool
     @State private var gameTableTop = false
+    @State var ballThrowing = false
     @State private var ballThrowed = false
+    @State var throwingDown: CFAbsoluteTime
+    @State var throwingUp: CFAbsoluteTime
+    @State var game: GameController
     
     var body: some View {
-        ZStack(alignment: .bottom, content: {
-            ARViewContainer(ballThrowed: self.$ballThrowed, withTable: self.$withTable).edgesIgnoringSafeArea(.all)
-            
-            Button(action: {
-                self.ballThrowed = true
-            }) {
-                Text("Throw!")
-            }.padding(20).buttonStyle(.bordered)
-        })
         
-    }
-    func resetThrow() {
-        self.ballThrowed = false
+        ZStack(alignment: .bottom) {
+            ARViewContainer(ballThrowed: self.$ballThrowed, withTable: self.$withTable, multiplayer: self.$multiplayer, throwingDown: self.$throwingDown, throwingUp: self.$throwingUp, game: self.$game).edgesIgnoringSafeArea(.all)
+            VStack {
+                HStack {
+                    Spacer()
+                    Button("Exit", action: exitGame)
+                }
+                VStack {
+                    Text("Points").font(.title).foregroundColor(.white).padding(5)
+                    HStack(alignment: .top, content: {
+                        Text("Player 1: \(self.game.pointsPlayer1)").foregroundColor(.white).padding(.leading, 30)
+                        Spacer()
+                        Text("Player 2: \(self.game.pointsPlayer2)").foregroundColor(.white).padding(.trailing, 30)
+                    }).padding(.bottom, 10)
+                }.background(Color.white.opacity(0.5)).cornerRadius(25)
+                Spacer()
+                Button( action: {
+                    
+                }) {
+                    Text("Throw!")
+                }
+                .padding(20).buttonStyle(.bordered)
+                    .simultaneousGesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
+                    .onChanged({_ in
+                        if !self.ballThrowed {
+                            if !self.ballThrowing {
+                                self.throwingDown = CFAbsoluteTimeGetCurrent()
+                                self.ballThrowing = true
+                            }
+                        }
+                    })
+                    .onEnded({_ in
+                        self.throwingUp = CFAbsoluteTimeGetCurrent()
+                        self.ballThrowed = true
+                        self.ballThrowing = false
+                    })
+                )
+            }.padding()
+        }
     }
     
+    func exitGame() {
+        
+    }
 }
 
 struct ARViewContainer: UIViewRepresentable {
     @Binding var ballThrowed: Bool
     @Binding var withTable: Bool
+    @Binding var multiplayer: Bool
+    @Binding var throwingDown: Double
+    @Binding var throwingUp: Double
+    @Binding var game: GameController
     
     func makeUIView(context: Context) -> ARView {
-        
         let arView = ARView(frame: .zero)
         let session = arView.session
         let config = ARWorldTrackingConfiguration()
@@ -55,65 +93,73 @@ struct ARViewContainer: UIViewRepresentable {
         arView.addSubview(coachingOverlay)
         
         arView.debugOptions = [.showFeaturePoints, .showPhysics]
-        
-        if (withTable) {
-            let anchor = try! OnePlayerWithTable.loadScene()
+        if (!multiplayer && withTable) {
+            let anchor = try! GameExperience.loadOnePlayerWithTable()
             arView.scene.anchors.append(anchor)
-        } else {
-            let anchor = try! OnePlayerWithoutTable.loadScene()
+        } else if (!multiplayer && !withTable) {
+            let anchor = try! GameExperience.loadOnePlayerWithoutTable()
+            arView.scene.anchors.append(anchor)
+        } else if (multiplayer && withTable) {
+            let anchor = try! GameExperience.loadTwoPlayerWithTable()
+            arView.scene.anchors.append(anchor)
+        } else if (multiplayer && !withTable) {
+            let anchor = try! GameExperience.loadTwoPlayerWithoutTable()
             arView.scene.anchors.append(anchor)
         }
-        
+        game.start()
         return arView
     }
     
     func updateUIView(_ arView: ARView, context: Context) {
-        let ball = MeshResource.generateSphere(radius: 0.01)
-        let ballEntity = ModelEntity(mesh: ball)
-        
-        //ballEntity.transform.translation = [0, 0, 0]
-        let sphereShape = ShapeResource.generateSphere(radius: 0.01)
+        let ball = MeshResource.generateSphere(radius: 0.038)
+        let ballEntity = ModelEntity(mesh: ball, materials: [SimpleMaterial(color: .white, isMetallic: false)])
+        let sphereShape = ShapeResource.generateSphere(radius: 0.038)
         ballEntity.collision = CollisionComponent(shapes: [sphereShape])
         ballEntity.physicsBody = PhysicsBodyComponent(
-            massProperties: .init(shape: sphereShape, mass: 5),
-            material: nil,
+            massProperties: .init(shape: sphereShape, mass: /*0.0025*/ 0.05),
+            material: .default,
             mode: .dynamic
         )
-        
-
-        if (ballThrowed) {
+    
+        if self.ballThrowed {
             let cameraAnchor = AnchorEntity(.camera)
             arView.scene.addAnchor(cameraAnchor)
+
             let ballClone = ballEntity.clone(recursive: true)
             cameraAnchor.addChild(ballClone)
-            ballClone.addForce([0,100,-100], relativeTo: nil)
-            collisionSubscribing = arView.scene.subscribe(to: CollisionEvents.Began.self,
-                                                          on: ballClone) { event in
-                ballThrowed = false
+
+            var ballForce = (self.throwingUp - self.throwingDown) * 10
+            if (ballForce > 100) {
+                ballForce = 100
             }
-//            let planeMesh = MeshResource.generatePlane(width: 1, depth: 1)
-//            let material = SimpleMaterial(color: .init(white: 1.0, alpha: 0.5), isMetallic: false)
-//            let planeEntity = ModelEntity(mesh: planeMesh, materials: [material])
-//            planeEntity.position = [0,0,0]
-//            planeEntity.physicsBody = PhysicsBodyComponent(massProperties: .default, material: nil, mode: .static)
-//            planeEntity.collision = CollisionComponent(shapes: [.generateBox(width: 1, height: 0.001, depth: 1)])
-//            cameraAnchor.addChild(planeEntity)
-            
-//            ballEntity.addForce([0, 2, 0], relativeTo: nil)
-//            ballEntity.addTorque([Float.random(in: 0 ... 0.4), Float.random(in: 0 ... 0.4), Float.random(in: 0 ... 0.4)], relativeTo: nil)
-            
-            
+
+            ballClone.addForce([0,2,Float((ballForce*(-1)))], relativeTo: cameraAnchor)
+            collisionSubscribing = arView.scene.subscribe(
+                to: CollisionEvents.Began.self,
+                on: ballClone
+            ) { event in
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    cameraAnchor.removeFromParent()
+                    ballClone.removeFromParent()
+                    self.ballThrowed = false
+
+                }
+            }
         }
-        
-        
     }
 }
 
 
-//#if DEBUG
-//struct GameView_Previews : PreviewProvider {
-//    static var previews: some View {
-//        GameView(isNavigationBarHidden: true, withTable: false)
-//    }
-//}
-//#endif
+#if DEBUG
+struct GameView_Previews : PreviewProvider {
+    static var previews: some View {
+        GameView(
+            withTable: false,
+            multiplayer: false,
+            throwingDown: CFAbsoluteTimeGetCurrent(),
+            throwingUp: CFAbsoluteTimeGetCurrent(),
+            game: GameController(players: 1)
+        )
+    }
+}
+#endif

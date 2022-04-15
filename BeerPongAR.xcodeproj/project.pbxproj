@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		DB36346127FCB51F000F6222 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36346027FCB51F000F6222 /* GameController.swift */; };
+		DB36346327FCC6E1000F6222 /* GameExperience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = DB36346227FCC6E1000F6222 /* GameExperience.rcproject */; };
+		DB36346527FCC7C9000F6222 /* TableSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36346427FCC7C9000F6222 /* TableSelectView.swift */; };
 		DB7C66FC27DFBC7300E7E722 /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = DB7C66FB27DFBC7300E7E722 /* FocusEntity */; };
 		DBB124C527DE5B2C0024C53F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB124C427DE5B2C0024C53F /* AppDelegate.swift */; };
 		DBB124C727DE5B2C0024C53F /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB124C627DE5B2C0024C53F /* GameView.swift */; };
@@ -17,10 +19,6 @@
 		DBB124E227DE5B2D0024C53F /* BeerPongARUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB124E127DE5B2D0024C53F /* BeerPongARUITests.swift */; };
 		DBB124E427DE5B2D0024C53F /* BeerPongARUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB124E327DE5B2D0024C53F /* BeerPongARUITestsLaunchTests.swift */; };
 		DBB501A427F0858D0092F8EC /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB501A327F0858D0092F8EC /* MainMenuView.swift */; };
-		DBDD6F5827FB8956004E371C /* TwoPlayerWithTable.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = DBDD6F5427FB8956004E371C /* TwoPlayerWithTable.rcproject */; };
-		DBDD6F5927FB8956004E371C /* OnePlayerWithoutTable.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = DBDD6F5527FB8956004E371C /* OnePlayerWithoutTable.rcproject */; };
-		DBDD6F5A27FB8956004E371C /* OnePlayerWithTable.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = DBDD6F5627FB8956004E371C /* OnePlayerWithTable.rcproject */; };
-		DBDD6F5B27FB8956004E371C /* TwoPlayerWithoutTable.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = DBDD6F5727FB8956004E371C /* TwoPlayerWithoutTable.rcproject */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +40,8 @@
 
 /* Begin PBXFileReference section */
 		DB36346027FCB51F000F6222 /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
+		DB36346227FCC6E1000F6222 /* GameExperience.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = GameExperience.rcproject; sourceTree = "<group>"; };
+		DB36346427FCC7C9000F6222 /* TableSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSelectView.swift; sourceTree = "<group>"; };
 		DBB124C127DE5B2C0024C53F /* BeerPongAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeerPongAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBB124C427DE5B2C0024C53F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBB124C627DE5B2C0024C53F /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
@@ -53,10 +53,6 @@
 		DBB124E127DE5B2D0024C53F /* BeerPongARUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerPongARUITests.swift; sourceTree = "<group>"; };
 		DBB124E327DE5B2D0024C53F /* BeerPongARUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerPongARUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		DBB501A327F0858D0092F8EC /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
-		DBDD6F5427FB8956004E371C /* TwoPlayerWithTable.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = TwoPlayerWithTable.rcproject; sourceTree = "<group>"; };
-		DBDD6F5527FB8956004E371C /* OnePlayerWithoutTable.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = OnePlayerWithoutTable.rcproject; sourceTree = "<group>"; };
-		DBDD6F5627FB8956004E371C /* OnePlayerWithTable.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = OnePlayerWithTable.rcproject; sourceTree = "<group>"; };
-		DBDD6F5727FB8956004E371C /* TwoPlayerWithoutTable.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = TwoPlayerWithoutTable.rcproject; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,13 +104,14 @@
 		DBB124C327DE5B2C0024C53F /* BeerPongAR */ = {
 			isa = PBXGroup;
 			children = (
-				DBDD6F5327FB893E004E371C /* Scenes */,
 				DBB124C427DE5B2C0024C53F /* AppDelegate.swift */,
 				DBB124C627DE5B2C0024C53F /* GameView.swift */,
+				DB36346227FCC6E1000F6222 /* GameExperience.rcproject */,
 				DBB501A327F0858D0092F8EC /* MainMenuView.swift */,
 				DBB124CA27DE5B2D0024C53F /* Assets.xcassets */,
 				DBB124CC27DE5B2D0024C53F /* Preview Content */,
 				DB36346027FCB51F000F6222 /* GameController.swift */,
+				DB36346427FCC7C9000F6222 /* TableSelectView.swift */,
 			);
 			path = BeerPongAR;
 			sourceTree = "<group>";
@@ -142,17 +139,6 @@
 				DBB124E327DE5B2D0024C53F /* BeerPongARUITestsLaunchTests.swift */,
 			);
 			path = BeerPongARUITests;
-			sourceTree = "<group>";
-		};
-		DBDD6F5327FB893E004E371C /* Scenes */ = {
-			isa = PBXGroup;
-			children = (
-				DBDD6F5527FB8956004E371C /* OnePlayerWithoutTable.rcproject */,
-				DBDD6F5627FB8956004E371C /* OnePlayerWithTable.rcproject */,
-				DBDD6F5727FB8956004E371C /* TwoPlayerWithoutTable.rcproject */,
-				DBDD6F5427FB8956004E371C /* TwoPlayerWithTable.rcproject */,
-			);
-			path = Scenes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,14 +277,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB36346327FCC6E1000F6222 /* GameExperience.rcproject in Sources */,
+				DB36346527FCC7C9000F6222 /* TableSelectView.swift in Sources */,
 				DBB501A427F0858D0092F8EC /* MainMenuView.swift in Sources */,
-				DBDD6F5A27FB8956004E371C /* OnePlayerWithTable.rcproject in Sources */,
-				DBDD6F5827FB8956004E371C /* TwoPlayerWithTable.rcproject in Sources */,
 				DBB124C727DE5B2C0024C53F /* GameView.swift in Sources */,
 				DBB124C527DE5B2C0024C53F /* AppDelegate.swift in Sources */,
 				DB36346127FCB51F000F6222 /* GameController.swift in Sources */,
-				DBDD6F5B27FB8956004E371C /* TwoPlayerWithoutTable.rcproject in Sources */,
-				DBDD6F5927FB8956004E371C /* OnePlayerWithoutTable.rcproject in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
