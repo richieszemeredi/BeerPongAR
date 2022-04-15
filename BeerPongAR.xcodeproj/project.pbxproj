@@ -10,7 +10,7 @@
 		DB36346127FCB51F000F6222 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36346027FCB51F000F6222 /* GameController.swift */; };
 		DB36346327FCC6E1000F6222 /* GameExperience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = DB36346227FCC6E1000F6222 /* GameExperience.rcproject */; };
 		DB36346527FCC7C9000F6222 /* TableSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36346427FCC7C9000F6222 /* TableSelectView.swift */; };
-		DB7C66FC27DFBC7300E7E722 /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = DB7C66FB27DFBC7300E7E722 /* FocusEntity */; };
+		DB363469280961F4000F6222 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB363468280961F4000F6222 /* Player.swift */; };
 		DBB124C527DE5B2C0024C53F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB124C427DE5B2C0024C53F /* AppDelegate.swift */; };
 		DBB124C727DE5B2C0024C53F /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB124C627DE5B2C0024C53F /* GameView.swift */; };
 		DBB124CB27DE5B2D0024C53F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBB124CA27DE5B2D0024C53F /* Assets.xcassets */; };
@@ -42,6 +42,7 @@
 		DB36346027FCB51F000F6222 /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
 		DB36346227FCC6E1000F6222 /* GameExperience.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = GameExperience.rcproject; sourceTree = "<group>"; };
 		DB36346427FCC7C9000F6222 /* TableSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSelectView.swift; sourceTree = "<group>"; };
+		DB363468280961F4000F6222 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		DBB124C127DE5B2C0024C53F /* BeerPongAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeerPongAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBB124C427DE5B2C0024C53F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBB124C627DE5B2C0024C53F /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
@@ -60,7 +61,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB7C66FC27DFBC7300E7E722 /* FocusEntity in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +112,7 @@
 				DBB124CC27DE5B2D0024C53F /* Preview Content */,
 				DB36346027FCB51F000F6222 /* GameController.swift */,
 				DB36346427FCC7C9000F6222 /* TableSelectView.swift */,
+				DB363468280961F4000F6222 /* Player.swift */,
 			);
 			path = BeerPongAR;
 			sourceTree = "<group>";
@@ -158,7 +159,6 @@
 			);
 			name = BeerPongAR;
 			packageProductDependencies = (
-				DB7C66FB27DFBC7300E7E722 /* FocusEntity */,
 			);
 			productName = BeerPongAR;
 			productReference = DBB124C127DE5B2C0024C53F /* BeerPongAR.app */;
@@ -233,7 +233,6 @@
 			);
 			mainGroup = DBB124B827DE5B2C0024C53F;
 			packageReferences = (
-				DB7C66FA27DFBC7300E7E722 /* XCRemoteSwiftPackageReference "FocusEntity" */,
 			);
 			productRefGroup = DBB124C227DE5B2C0024C53F /* Products */;
 			projectDirPath = "";
@@ -280,6 +279,7 @@
 				DB36346327FCC6E1000F6222 /* GameExperience.rcproject in Sources */,
 				DB36346527FCC7C9000F6222 /* TableSelectView.swift in Sources */,
 				DBB501A427F0858D0092F8EC /* MainMenuView.swift in Sources */,
+				DB363469280961F4000F6222 /* Player.swift in Sources */,
 				DBB124C727DE5B2C0024C53F /* GameView.swift in Sources */,
 				DBB124C527DE5B2C0024C53F /* AppDelegate.swift in Sources */,
 				DB36346127FCB51F000F6222 /* GameController.swift in Sources */,
@@ -377,6 +377,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -431,6 +432,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -613,25 +615,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		DB7C66FA27DFBC7300E7E722 /* XCRemoteSwiftPackageReference "FocusEntity" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/maxxfrazer/FocusEntity";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		DB7C66FB27DFBC7300E7E722 /* FocusEntity */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DB7C66FA27DFBC7300E7E722 /* XCRemoteSwiftPackageReference "FocusEntity" */;
-			productName = FocusEntity;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DBB124B927DE5B2C0024C53F /* Project object */;
 }
