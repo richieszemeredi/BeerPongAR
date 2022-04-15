@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		DB36346127FCB51F000F6222 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36346027FCB51F000F6222 /* GameController.swift */; };
 		DB36346327FCC6E1000F6222 /* GameExperience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = DB36346227FCC6E1000F6222 /* GameExperience.rcproject */; };
-		DB36346527FCC7C9000F6222 /* TableSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36346427FCC7C9000F6222 /* TableSelectView.swift */; };
 		DB363469280961F4000F6222 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB363468280961F4000F6222 /* Player.swift */; };
 		DBB124C527DE5B2C0024C53F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB124C427DE5B2C0024C53F /* AppDelegate.swift */; };
 		DBB124C727DE5B2C0024C53F /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB124C627DE5B2C0024C53F /* GameView.swift */; };
@@ -19,6 +18,7 @@
 		DBB124E227DE5B2D0024C53F /* BeerPongARUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB124E127DE5B2D0024C53F /* BeerPongARUITests.swift */; };
 		DBB124E427DE5B2D0024C53F /* BeerPongARUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB124E327DE5B2D0024C53F /* BeerPongARUITestsLaunchTests.swift */; };
 		DBB501A427F0858D0092F8EC /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB501A327F0858D0092F8EC /* MainMenuView.swift */; };
+		DBB9CDBA2809BD5800F5B228 /* HighScoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB9CDB92809BD5800F5B228 /* HighScoresView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +41,6 @@
 /* Begin PBXFileReference section */
 		DB36346027FCB51F000F6222 /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
 		DB36346227FCC6E1000F6222 /* GameExperience.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = GameExperience.rcproject; sourceTree = "<group>"; };
-		DB36346427FCC7C9000F6222 /* TableSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSelectView.swift; sourceTree = "<group>"; };
 		DB363468280961F4000F6222 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		DBB124C127DE5B2C0024C53F /* BeerPongAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeerPongAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBB124C427DE5B2C0024C53F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -54,6 +53,7 @@
 		DBB124E127DE5B2D0024C53F /* BeerPongARUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerPongARUITests.swift; sourceTree = "<group>"; };
 		DBB124E327DE5B2D0024C53F /* BeerPongARUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerPongARUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		DBB501A327F0858D0092F8EC /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
+		DBB9CDB92809BD5800F5B228 /* HighScoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoresView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,8 +111,8 @@
 				DBB124CA27DE5B2D0024C53F /* Assets.xcassets */,
 				DBB124CC27DE5B2D0024C53F /* Preview Content */,
 				DB36346027FCB51F000F6222 /* GameController.swift */,
-				DB36346427FCC7C9000F6222 /* TableSelectView.swift */,
 				DB363468280961F4000F6222 /* Player.swift */,
+				DBB9CDB92809BD5800F5B228 /* HighScoresView.swift */,
 			);
 			path = BeerPongAR;
 			sourceTree = "<group>";
@@ -277,7 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB36346327FCC6E1000F6222 /* GameExperience.rcproject in Sources */,
-				DB36346527FCC7C9000F6222 /* TableSelectView.swift in Sources */,
+				DBB9CDBA2809BD5800F5B228 /* HighScoresView.swift in Sources */,
 				DBB501A427F0858D0092F8EC /* MainMenuView.swift in Sources */,
 				DB363469280961F4000F6222 /* Player.swift in Sources */,
 				DBB124C727DE5B2C0024C53F /* GameView.swift in Sources */,

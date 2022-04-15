@@ -13,45 +13,32 @@ import Combine
 var collisionSubscribing:Cancellable?
 
 struct GameView : View {
-    @State var withTable: Bool
     @State var multiplayer: Bool
-    @State private var gameTableTop = false
+    @State var gameController: GameExperience.GameController
+
     @State var ballThrowing = false
-    @State private var ballThrowed = false
-    @State var throwingDown: CFAbsoluteTime
-    @State var throwingUp: CFAbsoluteTime
-    @State var game: GameExperience.GameController
-    @State var playerOnePoints: Int
-    @State var playerTwoPoints: Int
+    @State var ballThrowed = false
+    @State var throwingDown = CFAbsoluteTimeGetCurrent()
+    @State var throwingUp = CFAbsoluteTimeGetCurrent()
     
     var body: some View {
         ZStack(alignment: .bottom) {
             ARViewContainer(
                 ballThrowed: self.$ballThrowed,
-                withTable: self.$withTable,
                 multiplayer: self.$multiplayer,
                 throwingDown: self.$throwingDown,
                 throwingUp: self.$throwingUp,
-                game: self.$game,
-                playerOnePoints: self.$playerOnePoints
+                gameController: self.$gameController
             ).edgesIgnoringSafeArea(.all)
             VStack {
-                HStack {
+                HStack(alignment: .top, content: {
+                    VStack {
+                        Text("Time elapsed").foregroundColor(.white).padding(5)
+                        Text("0:00").foregroundColor(.white).padding(5).font(.system(size: 40))
+                    }.background(Color.black.opacity(0.5)).cornerRadius(5)
                     Spacer()
-                    Button("Exit", action: exitGame)
-                }
-                VStack {
-                    Text("Points").font(.title).foregroundColor(.white).padding(5)
-                    HStack(alignment: .top, content: {
-                        Text("Player 1: \(self.playerOnePoints)")
-                            .foregroundColor(.white)
-                            .padding(.leading, 30)
-                        Spacer()
-                        Text("Player 2: \(self.playerTwoPoints)")
-                            .foregroundColor(.white)
-                            .padding(.trailing, 30)
-                    }).padding(.bottom, 10)
-                }.background(Color.white.opacity(0.5)).cornerRadius(25)
+                    Button("Exit", action: exitGame).padding(5).buttonStyle(.bordered)
+                })
                 Spacer()
                 Button( action: {
                     self.throwingUp = CFAbsoluteTimeGetCurrent()
@@ -82,12 +69,10 @@ struct GameView : View {
 
 struct ARViewContainer: UIViewRepresentable {
     @Binding var ballThrowed: Bool
-    @Binding var withTable: Bool
     @Binding var multiplayer: Bool
     @Binding var throwingDown: Double
     @Binding var throwingUp: Double
-    @Binding var game: GameExperience.GameController
-    @Binding var playerOnePoints: Int
+    @Binding var gameController: GameExperience.GameController
     
     func makeUIView(context: Context) -> ARView {
         let arView = ARView(frame: .zero)
@@ -103,20 +88,13 @@ struct ARViewContainer: UIViewRepresentable {
         arView.addSubview(coachingOverlay)
         
         arView.debugOptions = [.showFeaturePoints, .showPhysics]
-        if (!multiplayer && withTable) {
-            self.game.gameAnchor = try! GameExperience.loadGame()
-            arView.scene.anchors.append(self.game.gameAnchor)
-        } else if (!multiplayer && !withTable) {
-            self.game.gameAnchor = try! GameExperience.loadGame()
-            arView.scene.anchors.append(self.game.gameAnchor)
-        } else if (multiplayer && withTable) {
-            self.game.gameAnchor = try! GameExperience.loadGame()
-            arView.scene.anchors.append(self.game.gameAnchor)
-        } else if (multiplayer && !withTable) {
-            self.game.gameAnchor = try! GameExperience.loadGame()
-            arView.scene.anchors.append(self.game.gameAnchor)
+        self.gameController.gameAnchor = try! GameExperience.loadGame()
+        arView.scene.anchors.append(self.gameController.gameAnchor)
+        
+        if !self.multiplayer {
+            self.gameController.gameAnchor.notifications.showOnePlayer.post()
         }
-        game.start()
+        gameController.start()
         return arView
     }
     
@@ -131,25 +109,18 @@ struct ARViewContainer: UIViewRepresentable {
         ) { event in
             let hitEntity = event.entityB ?? ModelEntity()
             if hitEntity.name.contains("cup") {
-                if (
-                    event.position[0] < 2 &&
-                    event.position[0] > -2 &&
-                    event.position[1] > 4 &&
-                    event.position[2] < 2 &&
-                    event.position[2] > -2
-                ) {
-                    print("got in the middle \(hitEntity.name)")
-                }
+                hitEntity.removeFromParent()
+                
             }
         }
         
         
-        if self.ballThrowed {
+        if (self.ballThrowed) {
             arView.scene.addAnchor(cameraAnchor)
             cameraAnchor.addChild(ball)
             throwBall(ball: ball, fromPosition: cameraAnchor)
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                game.throwed()
+                gameController.throwed()
                 resetCups()
                 cameraAnchor.removeFromParent()
             }
@@ -162,7 +133,7 @@ struct ARViewContainer: UIViewRepresentable {
         let sphereShape = ShapeResource.generateSphere(radius: 0.038)
         ballEntity.collision = CollisionComponent(shapes: [sphereShape])
         ballEntity.physicsBody = PhysicsBodyComponent(
-            massProperties: .init(shape: sphereShape, mass: /*0.0025*/ 0.0025),
+            massProperties: .init(shape: sphereShape, mass: 0.0025),
             material: .default,
             mode: .dynamic
         )
@@ -182,7 +153,7 @@ struct ARViewContainer: UIViewRepresentable {
     
     func resetCups() {
         print("Reseting cups.")
-        game.gameAnchor.notifications.reposition.post()
+        gameController.gameAnchor.notifications.reposition.post()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.1) {
             self.ballThrowed = false
         }
@@ -194,13 +165,8 @@ struct ARViewContainer: UIViewRepresentable {
 struct GameView_Previews : PreviewProvider {
     static var previews: some View {
         GameView(
-            withTable: false,
             multiplayer: false,
-            throwingDown: CFAbsoluteTimeGetCurrent(),
-            throwingUp: CFAbsoluteTimeGetCurrent(),
-            game: GameExperience.GameController(players: 1),
-            playerOnePoints: 0,
-            playerTwoPoints: 0
+            gameController: GameExperience.GameController()
         )
     }
 }

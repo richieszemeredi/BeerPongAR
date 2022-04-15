@@ -25,9 +25,9 @@ extension GameExperience {
         var gameAnchor: GameExperience.Game!
         
         
-        init(players: Int) {
+        init() {
             self.players = []
-            for _ in 0...players {
+            for _ in 0...2 {
                 let player = Player()
                 self.players.append(player)
             }
@@ -63,13 +63,13 @@ extension GameExperience.Game {
             player1cup3,
             player1cup4,
             player1cup5,
-            player1cup6
-//            player2cup1,
-//            player2cup2,
-//            player2cup3,
-//            player2cup4,
-//            player2cup5,
-//            player2cup6
+            player1cup6,
+            player2cup1,
+            player2cup2,
+            player2cup3,
+            player2cup4,
+            player2cup5,
+            player2cup6
         ]
     }
 }
