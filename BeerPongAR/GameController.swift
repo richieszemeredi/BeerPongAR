@@ -10,50 +10,32 @@ import RealityKit
 
 
 protocol GameControllerObserver: AnyObject {
-    func gameController(_ gameController: GameExperience.GameController)
+    func gameController(_ gameController: GameController)
 }
 
 
-extension GameExperience {
     
-    class GameController {
-        var cupShot: Int = 0
-        var withTable: Bool = false
-        var players: [Player]
-        var toShotPlayer: Int
-        
-        var gameAnchor: GameExperience.Game!
-        
-        
-        init() {
-            self.players = []
-            for _ in 0...2 {
-                let player = Player()
-                self.players.append(player)
-            }
-            print("\(players) players created.")
-            self.toShotPlayer = 1
-            
-        }
-        
-        public func start() {
-            print("Game started.")
-            self.toShotPlayer = 1
-        }
-        
-        
-        public func throwed() {
-            if self.toShotPlayer == 1 {
-                self.toShotPlayer = 2
-            } else {
-                self.toShotPlayer = 1
-            }
-            
-            
-        }
+class GameController {
+    var player: Player
+    var gameStart: NSDate
+    var gameAnchor: GameExperience.Game!
+    
+    
+    init(gameStart: NSDate) {
+        self.player = Player()
+        self.gameStart = gameStart
     }
-
+    
+    public func start() {
+        print("Game started.")
+    }
+    
+    
+    public func throwed() {
+        
+    }
 }
+
 
 extension GameExperience.Game {
     var allCups: [Entity?] {
@@ -63,13 +45,7 @@ extension GameExperience.Game {
             player1cup3,
             player1cup4,
             player1cup5,
-            player1cup6,
-            player2cup1,
-            player2cup2,
-            player2cup3,
-            player2cup4,
-            player2cup5,
-            player2cup6
+            player1cup6
         ]
     }
 }
