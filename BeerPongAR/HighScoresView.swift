@@ -6,10 +6,31 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct HighScoresView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    @FetchRequest(entity: HighScore.entity(), sortDescriptors: [])
+
+    var highScores: FetchedResults<HighScore>
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            HStack {
+                Text("High Scores").font(.title).padding(10)
+                Spacer()
+            }
+            List {
+                ForEach(highScores) { highScore in
+                    HStack {
+                        Text("\(highScore.date?.formatted() ?? "Date error")")
+                        Spacer()
+                        Text("\(highScore.seconds)")
+                    }.frame(height: 50)
+                }
+            }.padding(10).listStyle(.plain)
+        }
     }
 }
 

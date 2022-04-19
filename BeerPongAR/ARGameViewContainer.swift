@@ -1,5 +1,5 @@
 //
-//  GameViewContainer.swift
+//  ARGameViewContainer.swift
 //  BeerPongAR
 //
 //  Created by Richárd Szemerédi on 2022. 04. 18..
@@ -14,14 +14,17 @@ import Combine
 var collisionSubscribing:Cancellable?
 
 struct ARGameViewContainer: UIViewRepresentable {
+    @Binding var gameController: GameController
+    
     @Binding var ballThrowed: Bool
     @Binding var throwingDown: Double
     @Binding var throwingUp: Double
-    @Binding var gameController: GameController
     
-    var gameTimeManager: GameTimeManager
+    let coachingOverlay = CustomCoachingOverlayView()
     
     func makeUIView(context: Context) -> ARView {
+        UIApplication.shared.isIdleTimerDisabled = true
+
         let arView = ARView(frame: .zero)
         let session = arView.session
         let config = ARWorldTrackingConfiguration()
@@ -29,76 +32,50 @@ struct ARGameViewContainer: UIViewRepresentable {
         config.planeDetection = [.horizontal]
         session.run(config)
         
-        let coachingOverlay = ARCoachingOverlayView()
         coachingOverlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        coachingOverlay.session = session
+        coachingOverlay.session = arView.session
         coachingOverlay.goal = .horizontalPlane
         arView.addSubview(coachingOverlay)
-        
-//        arView.debugOptions = [.showFeaturePoints, .showPhysics]
+        coachingOverlay.delegate = coachingOverlay
+        arView.debugOptions = [.showFeaturePoints, .showPhysics, .showAnchorGeometry, .showWorldOrigin, .showAnchorOrigins, .showSceneUnderstanding]
         gameController.gameAnchor = try! GameExperience.loadGame()
         arView.scene.anchors.append(gameController.gameAnchor)
-        
-//        if !multiplayer {
-//            gameController.gameAnchor.notifications.showOnePlayer.post()
-//        }
-        gameController.start()
-        gameTimeManager.start()
+
         return arView
     }
     
     func updateUIView(_ arView: ARView, context: Context) {
+        if coachingOverlay.isHidden {
+            if !gameController.gamePlaying {
+                gameController.startGame()
+            }
+        }
+        
+        if coachingOverlay.isActive {
+            if gameController.gamePlaying {
+                gameController.pauseGame()
+            }
+        }
         let ball = createBallEntity().clone(recursive: true)
         let cameraAnchor = AnchorEntity(.camera)
-        
-        
         collisionSubscribing = arView.scene.subscribe(
             to: CollisionEvents.Began.self,
             on: ball
         ) { event in
-            let hitEntity = event.entityB ?? ModelEntity()
+            let hitEntity = event.entityB
             if hitEntity.name.contains("cup") {
-                
-                let positionOfBallOnCup = event.entityA.position(relativeTo: hitEntity)
-                
-                print("---------------------------------")
-                print(event.entityA.position(relativeTo: hitEntity))
-                print(hitEntity.position(relativeTo: event.entityA))
-
-                print("---------------------------------")
-                
-                if positionOfBallOnCup[1] > 0.32 {
-                    hitEntity.removeFromParent()
-                }
-
-//                let pos = hitEntity.position
-//                print(hitEntity.position)
-//                print(hitEntity.position(relativeTo: gameController.gameAnchor.table))
-                
-//                if (
-//                    pos[0] < 1 &&
-//                    pos[0] > -1 &&
-//                    pos[1] < 0.92 &&
-//                    pos[1] > 0.90 &&
-//                    pos[2] < 1 &&
-//                    pos[2] > -1
-//                ) {
-//                    hitEntity.removeFromParent()
-//                    print("\(hitEntity.name) removed")
-//                    event.entityA.removeFromParent()
-//                    resetCups()
-//                }
-                
+                hitEntity.removeFromParent()
+                print("\(hitEntity.name) removed")
+                event.entityA.removeFromParent()
+                gameController.cupDown(atTime: gameController.gameTimeSeconds)
             }
         }
-        
         
         if (self.ballThrowed) {
             arView.scene.addAnchor(cameraAnchor)
             cameraAnchor.addChild(ball)
             throwBall(ball: ball, fromPosition: cameraAnchor)
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                gameController.throwed()
                 resetCups()
                 cameraAnchor.removeFromParent()
             }

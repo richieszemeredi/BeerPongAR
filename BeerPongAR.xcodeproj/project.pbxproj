@@ -7,12 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB0258E0280EEE150001EC12 /* HighScoresModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DB0258DE280EEE150001EC12 /* HighScoresModel.xcdatamodeld */; };
 		DB36346127FCB51F000F6222 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36346027FCB51F000F6222 /* GameController.swift */; };
 		DB36346327FCC6E1000F6222 /* GameExperience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = DB36346227FCC6E1000F6222 /* GameExperience.rcproject */; };
-		DB363469280961F4000F6222 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB363468280961F4000F6222 /* Player.swift */; };
+		DB423240280F212B004B5946 /* CoachingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB42323F280F212B004B5946 /* CoachingExtension.swift */; };
 		DB67AC1B280D6FD500F4A11C /* ARGameViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB67AC1A280D6FD500F4A11C /* ARGameViewContainer.swift */; };
-		DB7568E4280C8F620013DD39 /* GameTimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7568E3280C8F620013DD39 /* GameTimeManager.swift */; };
-		DBB124C527DE5B2C0024C53F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB124C427DE5B2C0024C53F /* AppDelegate.swift */; };
+		DB67AC1D280D834F00F4A11C /* CupTester.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = DB67AC1C280D820900F4A11C /* CupTester.rcproject */; };
+		DB67AC1E280D835000F4A11C /* CupTester.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = DB67AC1C280D820900F4A11C /* CupTester.rcproject */; };
+		DB67AC1F280D835000F4A11C /* CupTester.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = DB67AC1C280D820900F4A11C /* CupTester.rcproject */; };
+		DBB124C527DE5B2C0024C53F /* BeerPongARApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB124C427DE5B2C0024C53F /* BeerPongARApp.swift */; };
 		DBB124C727DE5B2C0024C53F /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB124C627DE5B2C0024C53F /* GameView.swift */; };
 		DBB124CB27DE5B2D0024C53F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBB124CA27DE5B2D0024C53F /* Assets.xcassets */; };
 		DBB124CE27DE5B2D0024C53F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBB124CD27DE5B2D0024C53F /* Preview Assets.xcassets */; };
@@ -20,7 +23,8 @@
 		DBB124E227DE5B2D0024C53F /* BeerPongARUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB124E127DE5B2D0024C53F /* BeerPongARUITests.swift */; };
 		DBB124E427DE5B2D0024C53F /* BeerPongARUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB124E327DE5B2D0024C53F /* BeerPongARUITestsLaunchTests.swift */; };
 		DBB501A427F0858D0092F8EC /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB501A327F0858D0092F8EC /* MainMenuView.swift */; };
-		DBB9CDBA2809BD5800F5B228 /* HighScoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB9CDB92809BD5800F5B228 /* HighScoresView.swift */; };
+		DBCC329F280DD2C9001C8C81 /* HighScoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCC329E280DD2C9001C8C81 /* HighScoresView.swift */; };
+		DBCC32A9280DD632001C8C81 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCC32A8280DD632001C8C81 /* Persistence.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,14 +45,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DB0258DF280EEE150001EC12 /* HighScoresModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HighScoresModel.xcdatamodel; sourceTree = "<group>"; };
 		DB36346027FCB51F000F6222 /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
 		DB36346227FCC6E1000F6222 /* GameExperience.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = GameExperience.rcproject; sourceTree = "<group>"; };
-		DB363468280961F4000F6222 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		DB42323F280F212B004B5946 /* CoachingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachingExtension.swift; sourceTree = "<group>"; };
 		DB67AC17280D6B3500F4A11C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DB67AC1A280D6FD500F4A11C /* ARGameViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARGameViewContainer.swift; sourceTree = "<group>"; };
-		DB7568E3280C8F620013DD39 /* GameTimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimeManager.swift; sourceTree = "<group>"; };
+		DB67AC1C280D820900F4A11C /* CupTester.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = CupTester.rcproject; sourceTree = "<group>"; };
 		DBB124C127DE5B2C0024C53F /* BeerPongAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeerPongAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		DBB124C427DE5B2C0024C53F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DBB124C427DE5B2C0024C53F /* BeerPongARApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerPongARApp.swift; sourceTree = "<group>"; };
 		DBB124C627DE5B2C0024C53F /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		DBB124CA27DE5B2D0024C53F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DBB124CD27DE5B2D0024C53F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -58,7 +63,8 @@
 		DBB124E127DE5B2D0024C53F /* BeerPongARUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerPongARUITests.swift; sourceTree = "<group>"; };
 		DBB124E327DE5B2D0024C53F /* BeerPongARUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerPongARUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		DBB501A327F0858D0092F8EC /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
-		DBB9CDB92809BD5800F5B228 /* HighScoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoresView.swift; sourceTree = "<group>"; };
+		DBCC329E280DD2C9001C8C81 /* HighScoresView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScoresView.swift; sourceTree = "<group>"; };
+		DBCC32A8280DD632001C8C81 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,18 +115,20 @@
 		DBB124C327DE5B2C0024C53F /* BeerPongAR */ = {
 			isa = PBXGroup;
 			children = (
-				DBB124C427DE5B2C0024C53F /* AppDelegate.swift */,
+				DB42323F280F212B004B5946 /* CoachingExtension.swift */,
+				DBCC329E280DD2C9001C8C81 /* HighScoresView.swift */,
+				DBB124C427DE5B2C0024C53F /* BeerPongARApp.swift */,
 				DBB124C627DE5B2C0024C53F /* GameView.swift */,
 				DB67AC1A280D6FD500F4A11C /* ARGameViewContainer.swift */,
-				DBB9CDB92809BD5800F5B228 /* HighScoresView.swift */,
 				DBB501A327F0858D0092F8EC /* MainMenuView.swift */,
 				DB36346027FCB51F000F6222 /* GameController.swift */,
-				DB363468280961F4000F6222 /* Player.swift */,
-				DB7568E3280C8F620013DD39 /* GameTimeManager.swift */,
+				DBCC32A8280DD632001C8C81 /* Persistence.swift */,
 				DB36346227FCC6E1000F6222 /* GameExperience.rcproject */,
+				DB67AC1C280D820900F4A11C /* CupTester.rcproject */,
 				DB67AC17280D6B3500F4A11C /* Info.plist */,
 				DBB124CA27DE5B2D0024C53F /* Assets.xcassets */,
 				DBB124CC27DE5B2D0024C53F /* Preview Content */,
+				DB0258DE280EEE150001EC12 /* HighScoresModel.xcdatamodeld */,
 			);
 			path = BeerPongAR;
 			sourceTree = "<group>";
@@ -285,13 +293,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB36346327FCC6E1000F6222 /* GameExperience.rcproject in Sources */,
-				DBB9CDBA2809BD5800F5B228 /* HighScoresView.swift in Sources */,
 				DB67AC1B280D6FD500F4A11C /* ARGameViewContainer.swift in Sources */,
 				DBB501A427F0858D0092F8EC /* MainMenuView.swift in Sources */,
-				DB363469280961F4000F6222 /* Player.swift in Sources */,
-				DB7568E4280C8F620013DD39 /* GameTimeManager.swift in Sources */,
+				DB423240280F212B004B5946 /* CoachingExtension.swift in Sources */,
+				DBCC329F280DD2C9001C8C81 /* HighScoresView.swift in Sources */,
+				DBCC32A9280DD632001C8C81 /* Persistence.swift in Sources */,
 				DBB124C727DE5B2C0024C53F /* GameView.swift in Sources */,
-				DBB124C527DE5B2C0024C53F /* AppDelegate.swift in Sources */,
+				DBB124C527DE5B2C0024C53F /* BeerPongARApp.swift in Sources */,
+				DB67AC1D280D834F00F4A11C /* CupTester.rcproject in Sources */,
+				DB0258E0280EEE150001EC12 /* HighScoresModel.xcdatamodeld in Sources */,
 				DB36346127FCB51F000F6222 /* GameController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,6 +310,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB67AC1E280D835000F4A11C /* CupTester.rcproject in Sources */,
 				DBB124D827DE5B2D0024C53F /* BeerPongARTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,6 +319,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB67AC1F280D835000F4A11C /* CupTester.rcproject in Sources */,
 				DBB124E227DE5B2D0024C53F /* BeerPongARUITests.swift in Sources */,
 				DBB124E427DE5B2D0024C53F /* BeerPongARUITestsLaunchTests.swift in Sources */,
 			);
@@ -631,6 +643,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		DB0258DE280EEE150001EC12 /* HighScoresModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DB0258DF280EEE150001EC12 /* HighScoresModel.xcdatamodel */,
+			);
+			currentVersion = DB0258DF280EEE150001EC12 /* HighScoresModel.xcdatamodel */;
+			path = HighScoresModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = DBB124B927DE5B2C0024C53F /* Project object */;
 }
