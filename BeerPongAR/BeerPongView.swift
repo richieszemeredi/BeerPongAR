@@ -37,10 +37,11 @@ class BeerPongView: ARView, ARSessionDelegate {
         session.run(config)
         self.debugOptions = [.showFeaturePoints, .showPhysics, .showAnchorGeometry, .showWorldOrigin, .showAnchorOrigins, .showSceneUnderstanding]
         
-        let coachingOverlay = CustomCoachingOverlayView()
+        let coachingOverlay = ARCoachingOverlayView()
         coachingOverlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         coachingOverlay.session = arView.session
         coachingOverlay.goal = .horizontalPlane
+        coachingOverlay.delegate = self
         arView.addSubview(coachingOverlay)
     }
     
@@ -49,7 +50,6 @@ class BeerPongView: ARView, ARSessionDelegate {
             do {
                 self.gameController.gameAnchor = try result.get()
                 self.scene.anchors.append(self.gameController.gameAnchor)
-                self.gameController.timer?.start()
             } catch {
                 fatalError("Couldn't load game scene")
             }

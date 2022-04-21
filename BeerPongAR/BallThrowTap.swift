@@ -8,13 +8,8 @@
 import Foundation
 
 class BallThrowTap {
-    private var touchDownTime: CFAbsoluteTime
-    private var touchUpTime: CFAbsoluteTime
-    
-    init() {
-        self.touchUpTime = CFAbsoluteTime(0)
-        self.touchDownTime = CFAbsoluteTime(0)
-    }
+    private var touchDownTime = CFAbsoluteTime(0)
+    private var touchUpTime = CFAbsoluteTime(0)
     
     public func touchDown() {
         self.touchDownTime = CFAbsoluteTimeGetCurrent()
