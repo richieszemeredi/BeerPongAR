@@ -18,25 +18,38 @@ struct GameView : View {
 
     var body: some View {
         ZStack(alignment: .bottom) {
-            ARGameViewContainer(gameController, gameTimer).edgesIgnoringSafeArea(.all)
+            ARGameViewContainer(gameController, gameTimer)
+                .edgesIgnoringSafeArea(.all)
             VStack {
                 HStack(alignment: .top, content: {
-                    VStack {
+                    HStack {
                         Text("Time elapsed")
                             .foregroundColor(.white)
-                            .padding(30)
+                            .padding()
+                        Spacer()
                         Text(String(format: "%.1f", gameTimer.seconds))
                             .foregroundColor(.white)
-                            .padding(5)
+                            .padding()
                             .font(.system(size: 40))
                     }.background(Color.black.opacity(0.5)).cornerRadius(5)
+                })
+                HStack {
+                    Button("Select level") {
+                        
+                    }
+                    .padding()
+                    .background(Color.black.opacity(0.5))
+                    .cornerRadius(5)
+                    .foregroundColor(.white)
                     Spacer()
                     Button("Exit") {
                         exitGameAlert = true
                         gameTimer.pause()
                     }
-                    .padding(5)
-                    .buttonStyle(.bordered)
+                    .padding()
+                    .background(Color.black.opacity(0.5))
+                    .cornerRadius(5)
+                    .foregroundColor(.white)
                     .alert(isPresented: $exitGameAlert) {
                         Alert(
                             title: Text("Do you really want to exit?"),
@@ -51,9 +64,10 @@ struct GameView : View {
                             )
                         )
                     }
-                })
+                }
                 Spacer()
             }.padding()
+            Text("Press and hold the screen to throw a ball").padding(5).foregroundColor(.white.opacity(0.5))
         }.navigationBarHidden(true).navigationBarTitle("")
     }
     
