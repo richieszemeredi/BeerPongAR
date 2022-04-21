@@ -6,6 +6,7 @@
 //
 
 import ARKit
+import Combine
 
 extension ARCoachingOverlayView: ARCoachingOverlayViewDelegate {
     public func coachingOverlayViewWillActivate(_ coachingOverlayView: ARCoachingOverlayView) { }
@@ -16,17 +17,16 @@ extension ARCoachingOverlayView: ARCoachingOverlayViewDelegate {
 }
 
 
-class CustomCoachingOverlayView: ARCoachingOverlayView {
-//    var coaching = true
-//    
-//    override func coachingOverlayViewWillActivate(_ coachingOverlayView: ARCoachingOverlayView) {
-//        print("Coaching overlay activating.")
-//        coaching = true
-//    }
-//    
-//    override func coachingOverlayViewDidDeactivate(_ coachingOverlayView: ARCoachingOverlayView) {
-//        print("Coaching overlay deactiveating.")
-//        coaching = false
-//    }
+class CustomCoachingOverlayView: ARCoachingOverlayView, ObservableObject {
+    @Published var coaching = false
     
+    override func coachingOverlayViewWillActivate(_ coachingOverlayView: ARCoachingOverlayView) {
+        print("Coaching overlay activating.")
+        self.coaching = true
+    }
+    
+    override func coachingOverlayViewDidDeactivate(_ coachingOverlayView: ARCoachingOverlayView) {
+        print("Coaching overlay deactiveating.")
+        self.coaching = false
+    }
 }

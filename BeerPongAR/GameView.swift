@@ -11,29 +11,21 @@ import ARKit
 import Combine
 
 struct GameView : View {
-    @State var gameController = GameController()
+    @ObservedObject var gameTimer = GameTimer()
+    @State private var gameController = GameController()
     
-    @State var ballThrowing = false
-    @State var ballThrowed = false
-    @State var throwingDown = CFAbsoluteTimeGetCurrent()
-    @State var throwingUp = CFAbsoluteTimeGetCurrent()
     @State var exitGameAlert = false
-    
+
     var body: some View {
         ZStack(alignment: .bottom) {
-            ARGameViewContainer(
-                gameController: self.$gameController,
-                ballThrowed: self.$ballThrowed,
-                throwingDown: self.$throwingDown,
-                throwingUp: self.$throwingUp
-            ).edgesIgnoringSafeArea(.all)
+            ARGameViewContainer(gameController, gameTimer).edgesIgnoringSafeArea(.all)
             VStack {
                 HStack(alignment: .top, content: {
                     VStack {
                         Text("Time elapsed")
                             .foregroundColor(.white)
-                            .padding(5)
-                        Text(String(format: "%.1f", gameController.gameTimeSeconds))
+                            .padding(30)
+                        Text(String(format: "%.1f", gameTimer.seconds))
                             .foregroundColor(.white)
                             .padding(5)
                             .font(.system(size: 40))
@@ -41,7 +33,7 @@ struct GameView : View {
                     Spacer()
                     Button("Exit") {
                         exitGameAlert = true
-                        gameController.pauseGame()
+                        gameTimer.pause()
                     }
                     .padding(5)
                     .buttonStyle(.bordered)
@@ -51,7 +43,7 @@ struct GameView : View {
                             message: Text("This will end the game."),
                             primaryButton: .cancel(
                                 Text("No"),
-                                action: { gameController.startGame() }
+                                action: { gameTimer.start() }
                             ),
                             secondaryButton: .destructive(
                                 Text("Yes"),
@@ -61,24 +53,6 @@ struct GameView : View {
                     }
                 })
                 Spacer()
-                Button( action: {
-                    self.throwingUp = CFAbsoluteTimeGetCurrent()
-                    self.ballThrowed = true
-                    self.ballThrowing = false
-                }) {
-                    Text("Hold to throw")
-                }
-                .padding(20).buttonStyle(.bordered)
-                .simultaneousGesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
-                    .onChanged({_ in
-                        if !self.ballThrowed {
-                            if !self.ballThrowing {
-                                self.throwingDown = CFAbsoluteTimeGetCurrent()
-                                self.ballThrowing = true
-                            }
-                        }
-                    })
-                ).disabled(self.ballThrowed)
             }.padding()
         }.navigationBarHidden(true).navigationBarTitle("")
     }
@@ -87,6 +61,29 @@ struct GameView : View {
         gameController.exitGame()
     }
 }
+
+struct ARGameViewContainer: UIViewRepresentable {
+    @ObservedObject var timer: GameTimer
+    private var gameController: GameController
+    
+    init(_ gameController: GameController, _ timer: GameTimer) {
+        self.gameController = gameController
+        self.timer = timer
+        gameController.timer = self.timer
+    }
+   
+    func makeUIView(context: Context) -> BeerPongView {
+        let arView = BeerPongView(frame: .zero, gameController: self.gameController)
+        arView.setup()
+        return arView
+    }
+    
+    func updateUIView(_ arView: BeerPongView, context: Context) {
+       
+    }
+    
+}
+
 
 #if DEBUG
 struct GameView_Previews : PreviewProvider {
