@@ -69,8 +69,9 @@ struct GameView : View {
                 Spacer()
             }.padding()
             VStack {
-                ProgressView(value: throwTap.currentTime, total: 2)
+                ProgressView(value: throwTap.currentTime, total: 1.0)
                     .padding()
+                    .opacity(throwTap.currentTime == 0.0 ? 0 : 1)
                     .progressViewStyle(LinearProgressViewStyle(tint: throwTap.progressColor))
                     .scaleEffect(x: 1, y: 4, anchor: .center)
                 Text("Press and hold the screen to throw a ball").padding(5).foregroundColor(.white.opacity(0.5))

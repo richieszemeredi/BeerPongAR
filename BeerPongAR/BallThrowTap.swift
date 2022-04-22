@@ -14,7 +14,7 @@ class BallThrowTap: ObservableObject {
     private var timer = Timer()
     private var red = 0.0
     private var green = 1.0
-    private let MAX_TIME = 2.0
+    private let MAX_TIME = 1.0
     
     public func touchDown() {
         self.timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
@@ -39,7 +39,6 @@ class BallThrowTap: ObservableObject {
     }
     
     private func setColor() {
-        print("Current time: \(self.currentTime)")
         if (self.currentTime < (self.MAX_TIME/2)) {
             self.red = self.currentTime * 2
         } else {

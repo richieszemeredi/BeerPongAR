@@ -81,7 +81,7 @@ class BeerPongView: ARView, ARSessionDelegate {
             let camera = AnchorEntity(.camera)
             scene.addAnchor(camera)
             camera.addChild(ballEntity)
-            ballEntity.addForce([0,(force*(-0.5)),force], relativeTo: camera)
+            ballEntity.addForce([0,(force*(0.5)),-force], relativeTo: camera)
             
             self.collisionSubscribing = scene.subscribe(
                 to: CollisionEvents.Began.self,
@@ -95,7 +95,10 @@ class BeerPongView: ARView, ARSessionDelegate {
                     self.gameController.cupDown()
                 }
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: resetAfterThrow)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                self.resetAfterThrow()
+                camera.removeFromParent()
+            }
         }
     }
     
@@ -112,9 +115,9 @@ class BeerPongView: ARView, ARSessionDelegate {
             throwTap.touchDown()
         } else if gestureRecognizer.state == .ended {
             throwTap.touchUp()
-            var ballForce = Float(throwTap.currentTime * -0.125)
-            if (ballForce > 2) {
-                ballForce = 2
+            var ballForce = Float(throwTap.currentTime * 0.25)
+            if (ballForce > 1) {
+                ballForce = 1
             }
             throwBall(force: ballForce)
             throwTap.reset()
