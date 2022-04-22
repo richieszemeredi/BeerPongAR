@@ -12,13 +12,14 @@ import Combine
 
 struct GameView : View {
     @ObservedObject var gameTimer = GameTimer()
+    @ObservedObject var throwTap = BallThrowTap()
+
     @State private var gameController = GameController()
-    
     @State var exitGameAlert = false
 
     var body: some View {
         ZStack(alignment: .bottom) {
-            ARGameViewContainer(gameController, gameTimer)
+            ARGameViewContainer(gameController, gameTimer, throwTap)
                 .edgesIgnoringSafeArea(.all)
             VStack {
                 HStack(alignment: .top, content: {
@@ -67,7 +68,13 @@ struct GameView : View {
                 }
                 Spacer()
             }.padding()
-            Text("Press and hold the screen to throw a ball").padding(5).foregroundColor(.white.opacity(0.5))
+            VStack {
+                ProgressView(value: throwTap.currentTime, total: 2)
+                    .padding()
+                    .progressViewStyle(LinearProgressViewStyle(tint: throwTap.progressColor))
+                    .scaleEffect(x: 1, y: 4, anchor: .center)
+                Text("Press and hold the screen to throw a ball").padding(5).foregroundColor(.white.opacity(0.5))
+            }
         }.navigationBarHidden(true).navigationBarTitle("")
     }
     
@@ -78,16 +85,18 @@ struct GameView : View {
 
 struct ARGameViewContainer: UIViewRepresentable {
     @ObservedObject var timer: GameTimer
+    @ObservedObject var throwTap: BallThrowTap
     private var gameController: GameController
     
-    init(_ gameController: GameController, _ timer: GameTimer) {
+    init(_ gameController: GameController, _ timer: GameTimer, _ throwTap: BallThrowTap) {
         self.gameController = gameController
         self.timer = timer
+        self.throwTap = throwTap
         gameController.timer = self.timer
     }
    
     func makeUIView(context: Context) -> BeerPongView {
-        let arView = BeerPongView(frame: .zero, gameController: self.gameController)
+        let arView = BeerPongView(frame: .zero, gameController: self.gameController, throwTap: self.throwTap)
         arView.setup()
         return arView
     }

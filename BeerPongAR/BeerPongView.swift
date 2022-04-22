@@ -12,8 +12,9 @@ import RealityKit
 
 class BeerPongView: ARView, ARSessionDelegate {
     
-    init(frame: CGRect, gameController: GameController) {
+    init(frame: CGRect, gameController: GameController, throwTap: BallThrowTap) {
         self.gameController = gameController
+        self.throwTap = throwTap
         super.init(frame: frame)
     }
     
@@ -27,7 +28,7 @@ class BeerPongView: ARView, ARSessionDelegate {
     
     var arView: ARView { return self }
     var gameController: GameController
-    var throwTap = BallThrowTap()
+    var throwTap: BallThrowTap
     var collisionSubscribing:Cancellable?
 
 
@@ -66,31 +67,35 @@ class BeerPongView: ARView, ARSessionDelegate {
     }
     
     func throwBall(force: Float) {
-        let ballMesh = MeshResource.generateSphere(radius: 0.038)
-        let ballEntity = ModelEntity(mesh: ballMesh, materials: [SimpleMaterial(color: .white, isMetallic: false)])
-        let sphereShape = ShapeResource.generateSphere(radius: 0.038)
-        ballEntity.collision = CollisionComponent(shapes: [sphereShape])
-        ballEntity.physicsBody = PhysicsBodyComponent(
-            massProperties: .init(shape: sphereShape, mass: 0.0025),
-            material: .default,
-            mode: .dynamic
-        )
-        let camera = AnchorEntity(.camera)
-        scene.addAnchor(camera)
-        camera.addChild(ballEntity)
-        ballEntity.addForce([0,(force*(-0.5)),force], relativeTo: camera)
-        
-        self.collisionSubscribing = scene.subscribe(
-            to: CollisionEvents.Began.self,
-            on: ballEntity
-        ) { event in
-            let hitEntity = event.entityB
-            if hitEntity.name.contains("cup") {
-                hitEntity.removeFromParent()
-                print("\(hitEntity.name) removed")
-                event.entityA.removeFromParent()
-                self.gameController.cupDown()
+        if !self.gameController.throwingDisabled {
+            self.gameController.throwingDisabled = true
+            let ballMesh = MeshResource.generateSphere(radius: 0.038)
+            let ballEntity = ModelEntity(mesh: ballMesh, materials: [SimpleMaterial(color: .white, isMetallic: false)])
+            let sphereShape = ShapeResource.generateSphere(radius: 0.038)
+            ballEntity.collision = CollisionComponent(shapes: [sphereShape])
+            ballEntity.physicsBody = PhysicsBodyComponent(
+                massProperties: .init(shape: sphereShape, mass: 0.0025),
+                material: .default,
+                mode: .dynamic
+            )
+            let camera = AnchorEntity(.camera)
+            scene.addAnchor(camera)
+            camera.addChild(ballEntity)
+            ballEntity.addForce([0,(force*(-0.5)),force], relativeTo: camera)
+            
+            self.collisionSubscribing = scene.subscribe(
+                to: CollisionEvents.Began.self,
+                on: ballEntity
+            ) { event in
+                let hitEntity = event.entityB
+                if hitEntity.name.contains("cup") {
+                    hitEntity.removeFromParent()
+                    print("\(hitEntity.name) removed")
+                    event.entityA.removeFromParent()
+                    self.gameController.cupDown()
+                }
             }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: resetAfterThrow)
         }
     }
     
@@ -102,16 +107,17 @@ class BeerPongView: ARView, ARSessionDelegate {
     }
     
     @objc
-    func handleTap(_ gestureRecognizer: UITapGestureRecognizer) {
+    func handleTap(_ gestureRecognizer: UILongPressGestureRecognizer) {
         if gestureRecognizer.state == .began {
             throwTap.touchDown()
         } else if gestureRecognizer.state == .ended {
             throwTap.touchUp()
-            var ballForce = Float(throwTap.getTime() * -0.25)
-            if (ballForce > 100) {
-                ballForce = 100
+            var ballForce = Float(throwTap.currentTime * -0.125)
+            if (ballForce > 2) {
+                ballForce = 2
             }
             throwBall(force: ballForce)
+            throwTap.reset()
         }
     }
 }
