@@ -19,14 +19,18 @@ class GameController: ObservableObject {
     
     var throwingDisabled = false
     var timer: GameTimer?
+    @Published var gameEnd = false
     
     @Published var gamePlaying = false
     
     func cupDown() {
+        print(self.timer?.seconds ?? "no timer")
         if self.cupNumber > 1 {
             self.cupNumber -= 1
         } else {
+            timer?.timer.invalidate()
             saveScore(gameSeconds: self.timer?.seconds ?? 0.0)
+            self.gameEnd = true
         }
     }
     
@@ -41,6 +45,10 @@ class GameController: ObservableObject {
     }
     
     func exitGame() {
+        
+    }
+    
+    func resetGame() {
         
     }
     

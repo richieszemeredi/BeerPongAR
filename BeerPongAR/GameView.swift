@@ -14,12 +14,14 @@ struct GameView : View {
     @ObservedObject var gameTimer = GameTimer()
     @ObservedObject var throwTap = BallThrowTap()
 
-    @State private var gameController = GameController()
+    @ObservedObject private var gameController = GameController()
+    
     @State var exitGameAlert = false
+    @State var showEnd: Bool = false
 
     var body: some View {
         ZStack(alignment: .bottom) {
-            ARGameViewContainer(gameController, gameTimer, throwTap)
+            ARGameViewContainer(showEnd: self.$showEnd, gameController, gameTimer, throwTap)
                 .edgesIgnoringSafeArea(.all)
             VStack {
                 HStack(alignment: .top, content: {
@@ -57,11 +59,15 @@ struct GameView : View {
                             message: Text("This will end the game."),
                             primaryButton: .cancel(
                                 Text("No"),
-                                action: { gameTimer.start() }
+                                action: {
+                                    gameTimer.start()
+                                }
                             ),
                             secondaryButton: .destructive(
                                 Text("Yes"),
-                                action: exitGame
+                                action: {
+                                    exitGame()
+                                }
                             )
                         )
                     }
@@ -76,11 +82,13 @@ struct GameView : View {
                     .scaleEffect(x: 1, y: 4, anchor: .center)
                 Text("Press and hold the screen to throw a ball").padding(5).foregroundColor(.white.opacity(0.5))
             }
+            NavigationLink("endview", destination: EndView(showEnd: self.$showEnd, gameController), isActive: self.$gameController.gameEnd).hidden()
         }.navigationBarHidden(true).navigationBarTitle("")
     }
     
     func exitGame() {
         gameController.exitGame()
+        gameController.gameEnd = true
     }
 }
 
@@ -89,10 +97,13 @@ struct ARGameViewContainer: UIViewRepresentable {
     @ObservedObject var throwTap: BallThrowTap
     private var gameController: GameController
     
-    init(_ gameController: GameController, _ timer: GameTimer, _ throwTap: BallThrowTap) {
+    @Binding var showEnd: Bool
+    
+    init(showEnd: Binding<Bool>, _ gameController: GameController, _ timer: GameTimer, _ throwTap: BallThrowTap) {
         self.gameController = gameController
         self.timer = timer
         self.throwTap = throwTap
+        self._showEnd = showEnd
         gameController.timer = self.timer
     }
    

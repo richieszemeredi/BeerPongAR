@@ -17,6 +17,7 @@
 		DB67AC1D280D834F00F4A11C /* CupTester.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = DB67AC1C280D820900F4A11C /* CupTester.rcproject */; };
 		DB67AC1E280D835000F4A11C /* CupTester.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = DB67AC1C280D820900F4A11C /* CupTester.rcproject */; };
 		DB67AC1F280D835000F4A11C /* CupTester.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = DB67AC1C280D820900F4A11C /* CupTester.rcproject */; };
+		DBAEE211281305A1003C4CC4 /* EndView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAEE210281305A1003C4CC4 /* EndView.swift */; };
 		DBB124C527DE5B2C0024C53F /* BeerPongARApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB124C427DE5B2C0024C53F /* BeerPongARApp.swift */; };
 		DBB124C727DE5B2C0024C53F /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB124C627DE5B2C0024C53F /* GameView.swift */; };
 		DBB124CB27DE5B2D0024C53F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBB124CA27DE5B2D0024C53F /* Assets.xcassets */; };
@@ -56,6 +57,7 @@
 		DB42324B2811F49A004B5946 /* BeerPongView+Coaching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BeerPongView+Coaching.swift"; sourceTree = "<group>"; };
 		DB67AC17280D6B3500F4A11C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DB67AC1C280D820900F4A11C /* CupTester.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = CupTester.rcproject; sourceTree = "<group>"; };
+		DBAEE210281305A1003C4CC4 /* EndView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndView.swift; sourceTree = "<group>"; };
 		DBB124C127DE5B2C0024C53F /* BeerPongAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeerPongAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBB124C427DE5B2C0024C53F /* BeerPongARApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerPongARApp.swift; sourceTree = "<group>"; };
 		DBB124C627DE5B2C0024C53F /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
@@ -122,10 +124,12 @@
 				DBCC329E280DD2C9001C8C81 /* HighScoresView.swift */,
 				DBB124C427DE5B2C0024C53F /* BeerPongARApp.swift */,
 				DBB124C627DE5B2C0024C53F /* GameView.swift */,
+				DBAEE210281305A1003C4CC4 /* EndView.swift */,
 				DB42324728118FAD004B5946 /* BeerPongView.swift */,
 				DBB501A327F0858D0092F8EC /* MainMenuView.swift */,
 				DB36346027FCB51F000F6222 /* GameController.swift */,
 				DBCC32A8280DD632001C8C81 /* Persistence.swift */,
+				DB42324B2811F49A004B5946 /* BeerPongView+Coaching.swift */,
 				DB423241280FE9E9004B5946 /* GameTimer.swift */,
 				DB4232492811DF2C004B5946 /* BallThrowTap.swift */,
 				DB36346227FCC6E1000F6222 /* GameExperience.rcproject */,
@@ -134,7 +138,6 @@
 				DBB124CA27DE5B2D0024C53F /* Assets.xcassets */,
 				DBB124CC27DE5B2D0024C53F /* Preview Content */,
 				DB0258DE280EEE150001EC12 /* HighScoresModel.xcdatamodeld */,
-				DB42324B2811F49A004B5946 /* BeerPongView+Coaching.swift */,
 			);
 			path = BeerPongAR;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				DB42324C2811F49A004B5946 /* BeerPongView+Coaching.swift in Sources */,
 				DB67AC1D280D834F00F4A11C /* CupTester.rcproject in Sources */,
 				DB0258E0280EEE150001EC12 /* HighScoresModel.xcdatamodeld in Sources */,
+				DBAEE211281305A1003C4CC4 /* EndView.swift in Sources */,
 				DB36346127FCB51F000F6222 /* GameController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
