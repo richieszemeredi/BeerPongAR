@@ -10,7 +10,8 @@ import CoreData
 
 struct HighScoresView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    
+    @Environment (\.presentationMode) var presentationMode
+
     @FetchRequest(entity: HighScore.entity(), sortDescriptors: [])
 
     var highScores: FetchedResults<HighScore>
@@ -18,18 +19,21 @@ struct HighScoresView: View {
     var body: some View {
         VStack {
             HStack {
-                Text("High Scores").font(.title).padding(10)
+                Text("High Scores").font(.headline).padding()
                 Spacer()
+                Button("Close") {
+                    presentationMode.wrappedValue.dismiss()
+                }.padding()
             }
             List {
                 ForEach(highScores) { highScore in
                     HStack {
-                        Text("\(highScore.date?.formatted() ?? "Date error")")
+                        Text(highScore.date?.formatted() ?? "Date error")
                         Spacer()
                         Text("\(highScore.seconds)")
                     }.frame(height: 50)
                 }
-            }.padding(10).listStyle(.plain)
+            }.listStyle(.plain)
         }
     }
 }

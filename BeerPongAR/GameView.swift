@@ -82,7 +82,11 @@ struct GameView : View {
                     .scaleEffect(x: 1, y: 4, anchor: .center)
                 Text("Press and hold the screen to throw a ball").padding(5).foregroundColor(.white.opacity(0.5))
             }
-            NavigationLink("endview", destination: EndView(showEnd: self.$showEnd, gameController), isActive: self.$gameController.gameEnd).hidden()
+            NavigationLink(
+                "endview",
+                destination: EndView(showEnd: self.$showEnd, gameController),
+                isActive: self.$gameController.gameEnd
+            ).hidden()
         }.navigationBarHidden(true).navigationBarTitle("")
     }
     

@@ -10,9 +10,7 @@ import RealityKit
 import SwiftUI
 import CoreData
     
-class GameController: ObservableObject {
-    @Environment(\.managedObjectContext) private var persistenceControllerContext
-    
+class GameController: ObservableObject {    
     var gameStart = Date()
     var gameAnchor: GameExperience.Game!
     var cupNumber = 6
@@ -25,23 +23,12 @@ class GameController: ObservableObject {
     
     func cupDown() {
         print(self.timer?.seconds ?? "no timer")
-        if self.cupNumber > 1 {
+        if self.cupNumber > 23 {
             self.cupNumber -= 1
         } else {
             timer?.timer.invalidate()
-            saveScore(gameSeconds: self.timer?.seconds ?? 0.0)
             self.gameEnd = true
         }
-    }
-    
-    func saveScore(gameSeconds: Double) {
-        @Environment(\.managedObjectContext) var context
-        let score = HighScore(context: persistenceControllerContext)
-        
-        score.date = Date()
-        score.seconds = gameSeconds
-        
-        try? persistenceControllerContext.save()
     }
     
     func exitGame() {

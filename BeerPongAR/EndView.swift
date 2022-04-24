@@ -8,12 +8,26 @@
 import SwiftUI
 
 struct EndView: View {
+    @Environment(\.managedObjectContext) private var persistenceControllerContext
+
     @Binding var showEnd: Bool
     var gameController: GameController
     
     init(showEnd: Binding<Bool>, _ gameController: GameController) {
         self._showEnd = showEnd
         self.gameController = gameController
+        
+        let score = HighScore(context: persistenceControllerContext)
+        score.date = Date()
+        score.seconds = gameController.timer?.seconds ?? 0
+        score.id = UUID()
+        do {
+            try persistenceControllerContext.save()
+            print("Score saved.")
+        } catch {
+            print("Error saving context: \(error)")
+        }
+
     }
     
     var body: some View {
