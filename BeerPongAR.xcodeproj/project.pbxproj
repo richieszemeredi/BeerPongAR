@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		DB0258E0280EEE150001EC12 /* HighScoresModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DB0258DE280EEE150001EC12 /* HighScoresModel.xcdatamodeld */; };
+		DB3142BE2815948C00DEC13D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3142BD2815948C00DEC13D /* ContentView.swift */; };
+		DB3142C02815A19F00DEC13D /* ARViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3142BF2815A19F00DEC13D /* ARViewContainer.swift */; };
 		DB36346127FCB51F000F6222 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36346027FCB51F000F6222 /* GameController.swift */; };
 		DB36346327FCC6E1000F6222 /* GameExperience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = DB36346227FCC6E1000F6222 /* GameExperience.rcproject */; };
-		DB423242280FE9E9004B5946 /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB423241280FE9E9004B5946 /* GameTimer.swift */; };
 		DB42324828118FAD004B5946 /* BeerPongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB42324728118FAD004B5946 /* BeerPongView.swift */; };
 		DB42324A2811DF2C004B5946 /* BallThrowTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4232492811DF2C004B5946 /* BallThrowTap.swift */; };
 		DB42324C2811F49A004B5946 /* BeerPongView+Coaching.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB42324B2811F49A004B5946 /* BeerPongView+Coaching.swift */; };
@@ -48,9 +49,10 @@
 
 /* Begin PBXFileReference section */
 		DB0258DF280EEE150001EC12 /* HighScoresModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HighScoresModel.xcdatamodel; sourceTree = "<group>"; };
+		DB3142BD2815948C00DEC13D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		DB3142BF2815A19F00DEC13D /* ARViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewContainer.swift; sourceTree = "<group>"; };
 		DB36346027FCB51F000F6222 /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
 		DB36346227FCC6E1000F6222 /* GameExperience.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = GameExperience.rcproject; sourceTree = "<group>"; };
-		DB423241280FE9E9004B5946 /* GameTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimer.swift; sourceTree = "<group>"; };
 		DB42324728118FAD004B5946 /* BeerPongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerPongView.swift; sourceTree = "<group>"; };
 		DB4232492811DF2C004B5946 /* BallThrowTap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallThrowTap.swift; sourceTree = "<group>"; };
 		DB42324B2811F49A004B5946 /* BeerPongView+Coaching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BeerPongView+Coaching.swift"; sourceTree = "<group>"; };
@@ -120,15 +122,16 @@
 		DBB124C327DE5B2C0024C53F /* BeerPongAR */ = {
 			isa = PBXGroup;
 			children = (
-				DBCC329E280DD2C9001C8C81 /* HighScoresView.swift */,
 				DBB124C427DE5B2C0024C53F /* BeerPongARApp.swift */,
+				DB3142BD2815948C00DEC13D /* ContentView.swift */,
+				DB3142BF2815A19F00DEC13D /* ARViewContainer.swift */,
+				DBB501A327F0858D0092F8EC /* MainMenuView.swift */,
+				DBCC329E280DD2C9001C8C81 /* HighScoresView.swift */,
 				DBB124C627DE5B2C0024C53F /* GameView.swift */,
 				DBAEE210281305A1003C4CC4 /* EndView.swift */,
 				DB42324728118FAD004B5946 /* BeerPongView.swift */,
-				DBB501A327F0858D0092F8EC /* MainMenuView.swift */,
-				DB36346027FCB51F000F6222 /* GameController.swift */,
 				DB42324B2811F49A004B5946 /* BeerPongView+Coaching.swift */,
-				DB423241280FE9E9004B5946 /* GameTimer.swift */,
+				DB36346027FCB51F000F6222 /* GameController.swift */,
 				DB4232492811DF2C004B5946 /* BallThrowTap.swift */,
 				DB36346227FCC6E1000F6222 /* GameExperience.rcproject */,
 				DB67AC1C280D820900F4A11C /* CupTester.rcproject */,
@@ -300,9 +303,9 @@
 			files = (
 				DB42324A2811DF2C004B5946 /* BallThrowTap.swift in Sources */,
 				DB36346327FCC6E1000F6222 /* GameExperience.rcproject in Sources */,
+				DB3142BE2815948C00DEC13D /* ContentView.swift in Sources */,
 				DBB501A427F0858D0092F8EC /* MainMenuView.swift in Sources */,
 				DBCC329F280DD2C9001C8C81 /* HighScoresView.swift in Sources */,
-				DB423242280FE9E9004B5946 /* GameTimer.swift in Sources */,
 				DBB124C727DE5B2C0024C53F /* GameView.swift in Sources */,
 				DB42324828118FAD004B5946 /* BeerPongView.swift in Sources */,
 				DBB124C527DE5B2C0024C53F /* BeerPongARApp.swift in Sources */,
@@ -311,6 +314,7 @@
 				DB0258E0280EEE150001EC12 /* HighScoresModel.xcdatamodeld in Sources */,
 				DBAEE211281305A1003C4CC4 /* EndView.swift in Sources */,
 				DB36346127FCB51F000F6222 /* GameController.swift in Sources */,
+				DB3142C02815A19F00DEC13D /* ARViewContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

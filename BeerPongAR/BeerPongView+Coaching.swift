@@ -9,10 +9,14 @@ import ARKit
 
 extension BeerPongView: ARCoachingOverlayViewDelegate {
     public func coachingOverlayViewWillActivate(_ coachingOverlayView: ARCoachingOverlayView) {
-        self.gameController.timer?.pause()
+        if self.gameController.appState == .gamePlaying {
+            self.gameController.pauseGame()
+        }
     }
     
     public func coachingOverlayViewDidDeactivate(_ coachingOverlayView: ARCoachingOverlayView) {
-        self.gameController.timer?.start()
+        if self.gameController.appState == .gamePlaying {
+            self.gameController.resumeGame()
+        }
     }
 }

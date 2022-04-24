@@ -12,7 +12,7 @@ import SwiftUI
 struct BeerPongARApp: App {
     var body: some Scene {
         WindowGroup {
-            MainMenuView()
+            ContentView()
         }
     }
 }

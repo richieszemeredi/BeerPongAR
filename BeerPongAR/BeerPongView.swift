@@ -12,9 +12,8 @@ import RealityKit
 
 class BeerPongView: ARView, ARSessionDelegate {
     
-    init(frame: CGRect, gameController: GameController, throwTap: BallThrowTap) {
+    init(frame: CGRect, gameController: GameController) {
         self.gameController = gameController
-        self.throwTap = throwTap
         super.init(frame: frame)
     }
     
@@ -28,7 +27,6 @@ class BeerPongView: ARView, ARSessionDelegate {
     
     var arView: ARView { return self }
     var gameController: GameController
-    var throwTap: BallThrowTap
     var collisionSubscribing:Cancellable?
 
 
@@ -67,8 +65,8 @@ class BeerPongView: ARView, ARSessionDelegate {
     }
     
     func throwBall(force: Float) {
-        if !self.gameController.throwingDisabled {
-            self.gameController.throwingDisabled = true
+//        if !self.gameController.throwingDisabled {
+//            self.gameController.throwingDisabled = true
             let ballMesh = MeshResource.generateSphere(radius: 0.038)
             let ballEntity = ModelEntity(mesh: ballMesh, materials: [SimpleMaterial(color: .white, isMetallic: false)])
             let sphereShape = ShapeResource.generateSphere(radius: 0.038)
@@ -99,28 +97,28 @@ class BeerPongView: ARView, ARSessionDelegate {
                 self.resetAfterThrow()
                 camera.removeFromParent()
             }
-        }
+//        }
     }
     
     func resetAfterThrow() {
         gameController.gameAnchor.notifications.reposition.post()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.1) {
-            self.gameController.throwingDisabled = false
+//            self.gameController.throwingDisabled = false
         }
     }
     
     @objc
     func handleTap(_ gestureRecognizer: UILongPressGestureRecognizer) {
         if gestureRecognizer.state == .began {
-            throwTap.touchDown()
+            gameController.throwTap.touchDown()
         } else if gestureRecognizer.state == .ended {
-            throwTap.touchUp()
-            var ballForce = Float(throwTap.currentTime * 0.25)
+            gameController.throwTap.touchUp()
+            var ballForce = Float(gameController.throwTap.currentTime * 0.25)
             if (ballForce > 1) {
                 ballForce = 1
             }
             throwBall(force: ballForce)
-            throwTap.reset()
+            gameController.throwTap.reset()
         }
     }
 }

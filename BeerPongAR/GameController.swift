@@ -9,34 +9,54 @@ import Foundation
 import RealityKit
 import SwiftUI
 import CoreData
+
+enum AppState {
+    case mainMenu
+    case gamePlaying
+    case gameEnd
+}
     
-class GameController: ObservableObject {    
+class GameController: ObservableObject {
+    @Published var appState: AppState = .mainMenu
+    @Published var gameSeconds = 0.0
+    
+    var throwTap = BallThrowTap()
+    var gameTimer = Timer()
+    
     var gameStart = Date()
     var gameAnchor: GameExperience.Game!
     var cupNumber = 6
     
-    var throwingDisabled = false
-    var timer: GameTimer?
-    @Published var gameEnd = false
+    func startGame() {
+        self.appState = .gamePlaying
+        self.gameSeconds = 0.0
+        self.gameTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+            self.gameSeconds = self.gameSeconds + 0.1
+        }
+        self.gameStart = Date()
+    }
     
-    @Published var gamePlaying = false
+    func pauseGame() {
+        self.gameTimer.invalidate()
+    }
     
-    func cupDown() {
-        print(self.timer?.seconds ?? "no timer")
-        if self.cupNumber > 23 {
-            self.cupNumber -= 1
-        } else {
-            timer?.timer.invalidate()
-            self.gameEnd = true
+    func resumeGame() {
+        self.gameTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+            self.gameSeconds = self.gameSeconds + 0.1
         }
     }
     
-    func exitGame() {
-        
+    func endGame() {
+        self.appState = .gameEnd
+        self.gameTimer.invalidate()
     }
     
-    func resetGame() {
-        
+    func cupDown() {
+        if self.cupNumber > 23 {
+            self.cupNumber -= 1
+        } else {
+           endGame()
+        }
     }
     
 }

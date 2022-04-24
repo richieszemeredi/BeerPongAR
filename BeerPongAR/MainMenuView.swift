@@ -8,31 +8,38 @@
 import SwiftUI
 
 struct MainMenuView: View {
+    @ObservedObject var gameController: GameController
     @State var showHighScores = false
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                VStack {
-                    Text("BeerPongAR").font(.system(size: 50)).padding(50)
-                    Spacer()
-                    VStack{
-                        NavigationLink("Start Game", destination: GameView())
-                            .padding(10).font(.headline)
-                        
-                        Button( action: {
-                            showHighScores = true
-                        }) {
-                            Text("HighScores")
-                        }.padding(10).font(.headline)
-                          
-                    }.padding(50)
+        VStack {
+            Text("BeerPongAR")
+                .font(.largeTitle)
+                .padding()
+                .background(Color.black.opacity(0.5))
+                .cornerRadius(5)
+                .foregroundColor(.white)
+            Spacer()
+            VStack{
+                Button("Start game") {
+                    gameController.startGame()
                 }
-            }
-            .navigationBarTitle("")
-            .navigationBarHidden(true)
+                .padding()
+                .background(Color.black.opacity(0.5))
+                .cornerRadius(5)
+                .foregroundColor(.white)
+                
+                Button("Highscores") {
+                    showHighScores.toggle()
+                }
+                .padding()
+                .background(Color.black.opacity(0.5))
+                .cornerRadius(5)
+                .foregroundColor(.white)
+            }.padding(50)
         }
-        .popover(isPresented: $showHighScores) {
+        .padding()
+        .sheet(isPresented: $showHighScores) {
             HighScoresView()
         }
     }
@@ -40,6 +47,6 @@ struct MainMenuView: View {
 
 struct MainMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        MainMenuView()
+        MainMenuView(gameController: GameController())
     }
 }
