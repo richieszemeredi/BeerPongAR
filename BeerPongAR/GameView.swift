@@ -14,7 +14,7 @@ struct GameView : View {
     @ObservedObject var gameController: GameController
 
     @State var exitGameAlert = false
-
+    
     var body: some View {
         VStack {
             HStack {
@@ -34,39 +34,85 @@ struct GameView : View {
             
             HStack {
                 Button("Select level") {
-
+                    exitGameAlert.toggle()
+                    gameController.selectLevel()
                 }
                 .padding()
                 .background(Color.black.opacity(0.5))
                 .cornerRadius(5)
                 .foregroundColor(.white)
+//                .alert(isPresented: $exitGameAlert) {
+//                    Alert(
+//                        title: Text("Do you really want to do it?"),
+//                        message: Text("This will end the game."),
+//                        primaryButton: .cancel(
+//                            Text("No"),
+//                            action: {
+//                                gameController.resumeGame()
+//                            }
+//                        ),
+//                        secondaryButton: .destructive(
+//                            Text("Yes"),
+//                            action: {
+//                                gameController.selectLevel()
+//                            }
+//                        )
+//                    )
+//                }
+                Spacer()
+                Button("Restart level") {
+                    exitGameAlert.toggle()
+                    gameController.startGame()
+                }
+                .padding()
+                .background(Color.black.opacity(0.5))
+                .cornerRadius(5)
+                .foregroundColor(.white)
+//                .alert(isPresented: $exitGameAlert) {
+//                    Alert(
+//                        title: Text("Do you really want to do it?"),
+//                        message: Text("This will end the game."),
+//                        primaryButton: .cancel(
+//                            Text("No"),
+//                            action: {
+//                                gameController.resumeGame()
+//                            }
+//                        ),
+//                        secondaryButton: .destructive(
+//                            Text("Yes"),
+//                            action: {
+//                                gameController.startGame()
+//                            }
+//                        )
+//                    )
+//                }
                 Spacer()
                 Button("Exit") {
-                    exitGameAlert = true
-                    gameController.pauseGame()
+                    exitGameAlert.toggle()
+                    gameController.showMainMenu()
                 }
                 .padding()
                 .background(Color.black.opacity(0.5))
                 .cornerRadius(5)
                 .foregroundColor(.white)
-                .alert(isPresented: $exitGameAlert) {
-                    Alert(
-                        title: Text("Do you really want to exit?"),
-                        message: Text("This will end the game."),
-                        primaryButton: .cancel(
-                            Text("No"),
-                            action: {
-                                gameController.resumeGame()
-                            }
-                        ),
-                        secondaryButton: .destructive(
-                            Text("Yes"),
-                            action: {
-                                gameController.appState = .mainMenu
-                            }
-                        )
-                    )
-                }
+//                .alert(isPresented: $exitGameAlert) {
+//                    Alert(
+//                        title: Text("Do you really want to exit?"),
+//                        message: Text("This will end the game."),
+//                        primaryButton: .cancel(
+//                            Text("No"),
+//                            action: {
+//                                gameController.resumeGame()
+//                            }
+//                        ),
+//                        secondaryButton: .destructive(
+//                            Text("Yes"),
+//                            action: {
+//                                gameController.showMainMenu()
+//                            }
+//                        )
+//                    )
+//                }
             }
             Spacer()
             VStack {
@@ -78,6 +124,7 @@ struct GameView : View {
                 Text("Press and hold the screen to throw a ball")
                     .padding(5)
                     .foregroundColor(.white.opacity(0.5))
+                    .opacity(gameController.gameSeconds < 10 ? 1 : 0)
             }
         }.padding()
     }

@@ -22,7 +22,7 @@ struct MainMenuView: View {
             Spacer()
             VStack{
                 Button("Start game") {
-                    gameController.startGame()
+                    gameController.selectLevel()
                 }
                 .padding()
                 .background(Color.black.opacity(0.5))

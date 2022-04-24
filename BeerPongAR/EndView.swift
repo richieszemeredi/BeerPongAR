@@ -29,7 +29,7 @@ struct EndView: View {
             .cornerRadius(5)
             .foregroundColor(.white)
             Spacer()
-            HStack {
+            VStack {
                 Button("Start again") {
                     gameController.startGame()
                 }
@@ -38,9 +38,16 @@ struct EndView: View {
                 .cornerRadius(5)
                 .foregroundColor(.white)
                 
+                Button("Choose another level") {
+                    gameController.selectLevel()
+                }
+                .padding()
+                .background(Color.black.opacity(0.5))
+                .cornerRadius(5)
+                .foregroundColor(.white)
                 
                 Button ("Go to main menu") {
-                    gameController.appState = .mainMenu
+                    gameController.showMainMenu()
                 }
                 .padding()
                 .background(Color.black.opacity(0.5))

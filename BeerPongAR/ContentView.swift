@@ -18,6 +18,10 @@ struct ContentView: View {
             if gameController.appState == .mainMenu {
                 MainMenuView(gameController: gameController)
             }
+            
+            if gameController.appState == .levelSelecting {
+                LevelSelectView(gameController: gameController)
+            }
 
             if gameController.appState == .gamePlaying {
                 GameView(gameController: gameController)

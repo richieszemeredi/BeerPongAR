@@ -28,6 +28,8 @@ class BeerPongView: ARView, ARSessionDelegate {
     var arView: ARView { return self }
     var gameController: GameController
     var collisionSubscribing:Cancellable?
+    
+    var throingEnabled = true
 
 
     private func setupWorldTracking() {
@@ -65,60 +67,55 @@ class BeerPongView: ARView, ARSessionDelegate {
     }
     
     func throwBall(force: Float) {
-//        if !self.gameController.throwingDisabled {
-//            self.gameController.throwingDisabled = true
-            let ballMesh = MeshResource.generateSphere(radius: 0.038)
-            let ballEntity = ModelEntity(mesh: ballMesh, materials: [SimpleMaterial(color: .white, isMetallic: false)])
-            let sphereShape = ShapeResource.generateSphere(radius: 0.038)
-            ballEntity.collision = CollisionComponent(shapes: [sphereShape])
-            ballEntity.physicsBody = PhysicsBodyComponent(
-                massProperties: .init(shape: sphereShape, mass: 0.0025),
-                material: .default,
-                mode: .dynamic
-            )
-            let camera = AnchorEntity(.camera)
-            scene.addAnchor(camera)
-            camera.addChild(ballEntity)
-            ballEntity.addForce([0,(force*(0.5)),-force], relativeTo: camera)
-            
-            self.collisionSubscribing = scene.subscribe(
-                to: CollisionEvents.Began.self,
-                on: ballEntity
-            ) { event in
-                let hitEntity = event.entityB
-                if hitEntity.name.contains("cup") {
-                    hitEntity.removeFromParent()
-                    print("\(hitEntity.name) removed")
-                    event.entityA.removeFromParent()
-                    self.gameController.cupDown()
-                }
+        throingEnabled = false
+        let ballMesh = MeshResource.generateSphere(radius: 0.038)
+        let ballEntity = ModelEntity(mesh: ballMesh, materials: [SimpleMaterial(color: .white, isMetallic: false)])
+        let sphereShape = ShapeResource.generateSphere(radius: 0.038)
+        ballEntity.collision = CollisionComponent(shapes: [sphereShape])
+        ballEntity.physicsBody = PhysicsBodyComponent(
+            massProperties: .init(shape: sphereShape, mass: 0.0025),
+            material: .default,
+            mode: .dynamic
+        )
+        let camera = AnchorEntity(.camera)
+        scene.addAnchor(camera)
+        camera.addChild(ballEntity)
+        ballEntity.addForce([0,(force*(0.5)),-force], relativeTo: camera)
+        
+        self.collisionSubscribing = scene.subscribe(
+            to: CollisionEvents.Began.self,
+            on: ballEntity
+        ) { event in
+            let hitEntity = event.entityB
+            if hitEntity.name.contains("cup") {
+                hitEntity.isEnabled = false
+                print("\(hitEntity.name) removed")
+                event.entityA.removeFromParent()
+                self.gameController.cupDown()
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                self.resetAfterThrow()
-                camera.removeFromParent()
-            }
-//        }
-    }
-    
-    func resetAfterThrow() {
-        gameController.gameAnchor.notifications.reposition.post()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.1) {
-//            self.gameController.throwingDisabled = false
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+//            self.gameController.resetCups()
+            camera.removeFromParent()
+            self.throingEnabled = true
         }
     }
     
+    
     @objc
     func handleTap(_ gestureRecognizer: UILongPressGestureRecognizer) {
-        if gestureRecognizer.state == .began {
-            gameController.throwTap.touchDown()
-        } else if gestureRecognizer.state == .ended {
-            gameController.throwTap.touchUp()
-            var ballForce = Float(gameController.throwTap.currentTime * 0.25)
-            if (ballForce > 1) {
-                ballForce = 1
+        if gameController.appState == .gamePlaying && throingEnabled {
+            if gestureRecognizer.state == .began {
+                gameController.throwTap.touchDown()
+            } else if gestureRecognizer.state == .ended {
+                gameController.throwTap.touchUp()
+                var ballForce = Float(gameController.throwTap.currentTime * 0.25)
+                if (ballForce > 1) {
+                    ballForce = 1
+                }
+                throwBall(force: ballForce)
+                gameController.throwTap.reset()
             }
-            throwBall(force: ballForce)
-            gameController.throwTap.reset()
         }
     }
 }
