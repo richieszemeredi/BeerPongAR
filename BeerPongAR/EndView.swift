@@ -12,48 +12,57 @@ struct EndView: View {
     
     var body: some View {
         VStack {
-            Spacer()
+            VStack {
             Text("Game Over")
                 .padding()
                 .font(.largeTitle)
                 .background(Color.black.opacity(0.5))
-                .cornerRadius(5)
+                .cornerRadius(10)
                 .foregroundColor(.white)
+            }.padding(.top)
+            Spacer()
             HStack {
-                Text("Seconds:").padding()
-                Text("\(String(format: "%.1f", self.gameController.gameSeconds))").padding()
+                Text("Seconds:")
+                    .padding()
+                    .font(.title2)
+                Text("\(String(format: "%.1f", self.gameController.gameSeconds))")
+                    .padding()
+                    .font(.largeTitle)
             }
             .padding()
-            .font(.title3)
             .background(Color.black.opacity(0.5))
-            .cornerRadius(5)
+            .cornerRadius(10)
             .foregroundColor(.white)
             Spacer()
             VStack {
                 Button("Start again") {
                     gameController.startGame()
                 }
+                .frame(maxWidth: .infinity)
                 .padding()
                 .background(Color.black.opacity(0.5))
-                .cornerRadius(5)
+                .cornerRadius(10)
                 .foregroundColor(.white)
                 
                 Button("Choose another level") {
                     gameController.selectLevel()
                 }
+                .frame(maxWidth: .infinity)
                 .padding()
                 .background(Color.black.opacity(0.5))
-                .cornerRadius(5)
+                .cornerRadius(10)
                 .foregroundColor(.white)
                 
                 Button ("Go to main menu") {
                     gameController.showMainMenu()
                 }
+                .frame(maxWidth: .infinity)
                 .padding()
                 .background(Color.black.opacity(0.5))
-                .cornerRadius(5)
+                .cornerRadius(10)
                 .foregroundColor(.white)
-            }.padding()
+            }
+            .fixedSize(horizontal: true, vertical: false)
         }.padding()
     }
 }

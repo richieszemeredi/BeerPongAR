@@ -13,30 +13,37 @@ struct MainMenuView: View {
     
     var body: some View {
         VStack {
-            Text("BeerPongAR")
+            VStack {
+            Text("🍻 BeerPong AR 🍺")
+                .fixedSize(horizontal: false, vertical: true)
                 .font(.largeTitle)
                 .padding()
                 .background(Color.black.opacity(0.5))
-                .cornerRadius(5)
+                .cornerRadius(10)
                 .foregroundColor(.white)
+            }.padding(.top)
             Spacer()
             VStack{
                 Button("Start game") {
                     gameController.selectLevel()
                 }
+                .frame(maxWidth: .infinity)
                 .padding()
                 .background(Color.black.opacity(0.5))
-                .cornerRadius(5)
+                .cornerRadius(10)
                 .foregroundColor(.white)
                 
                 Button("Highscores") {
                     showHighScores.toggle()
                 }
+                .frame(maxWidth: .infinity)
                 .padding()
                 .background(Color.black.opacity(0.5))
-                .cornerRadius(5)
+                .cornerRadius(10)
                 .foregroundColor(.white)
-            }.padding(50)
+            }
+            .padding(50)
+            .frame(maxWidth: 250)
         }
         .padding()
         .sheet(isPresented: $showHighScores) {
@@ -47,6 +54,8 @@ struct MainMenuView: View {
 
 struct MainMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        MainMenuView(gameController: GameController())
+        Group {
+            MainMenuView(gameController: GameController())
+        }
     }
 }
