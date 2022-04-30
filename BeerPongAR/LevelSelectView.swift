@@ -16,6 +16,7 @@ struct LevelSelectView: View {
                 gameController.gameLevel = .easy
                 gameController.startGame()
             }
+            .frame(maxWidth: .infinity)
             .padding()
             .background(Color.black.opacity(0.5))
             .cornerRadius(5)
@@ -25,6 +26,7 @@ struct LevelSelectView: View {
                 gameController.gameLevel = .medium
                 gameController.startGame()
             }
+            .frame(maxWidth: .infinity)
             .padding()
             .background(Color.black.opacity(0.5))
             .cornerRadius(5)
@@ -34,11 +36,15 @@ struct LevelSelectView: View {
                 gameController.gameLevel = .hard
                 gameController.startGame()
             }
+            .frame(maxWidth: .infinity)
             .padding()
             .background(Color.black.opacity(0.5))
             .cornerRadius(5)
             .foregroundColor(.white)
-        }.padding(50)
+        }
+        .padding(50)
+        .frame(maxWidth: 200)
+
     }
 }
 

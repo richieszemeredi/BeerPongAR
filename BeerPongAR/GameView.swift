@@ -14,14 +14,16 @@ struct GameView : View {
     @ObservedObject var gameController: GameController
     
     @State var exitGameAlert = false
+    @State var restartGameAlert = false
+    @State var selectGameAlert = false
     
-    var body: some View {
+        var body: some View {
         ZStack {
             VStack {
                 Spacer()
                 Image("crosshair")
                     .resizable()
-                    .frame(width: 75, height: 75, alignment: .center)
+                    .frame(width: 50, height: 50, alignment: .center)
                 Spacer()
             }
             VStack {
@@ -42,85 +44,90 @@ struct GameView : View {
                 
                 HStack {
                     Button("Select level") {
-                        exitGameAlert.toggle()
-                        gameController.selectLevel()
+                        selectGameAlert = true
+                        gameController.pauseGame()
+                    }
+                    .alert(isPresented: $selectGameAlert) {
+                        Alert(
+                            title: Text("Would you like to exit?"),
+                            message: Text("This will discard any of your game progress."),
+                            primaryButton: .cancel(
+                                Text("No"),
+                                action: {
+                                    gameController.resumeGame()
+                                }
+                            ),
+                            secondaryButton: .destructive(
+                                Text("Yes"),
+                                action: {
+                                    gameController.selectLevel()
+                                }
+                            )
+                        )
                     }
                     .padding()
                     .background(Color.black.opacity(0.5))
                     .cornerRadius(10)
                     .foregroundColor(.white)
-                    //                .alert(isPresented: $exitGameAlert) {
-                    //                    Alert(
-                    //                        title: Text("Do you really want to do it?"),
-                    //                        message: Text("This will end the game."),
-                    //                        primaryButton: .cancel(
-                    //                            Text("No"),
-                    //                            action: {
-                    //                                gameController.resumeGame()
-                    //                            }
-                    //                        ),
-                    //                        secondaryButton: .destructive(
-                    //                            Text("Yes"),
-                    //                            action: {
-                    //                                gameController.selectLevel()
-                    //                            }
-                    //                        )
-                    //                    )
-                    //                }
+                        
                     Spacer()
+                    
                     Button("Restart level") {
-                        exitGameAlert.toggle()
-                        gameController.startGame()
+                        restartGameAlert = true
+                        gameController.pauseGame()
+                    }
+                    .alert(isPresented: $restartGameAlert) {
+                        Alert(
+                            title: Text("Would you like to restart the game?"),
+                            message: Text("This will discard any of your game progress."),
+                            primaryButton: .cancel(
+                                Text("No"),
+                                action: {
+                                    gameController.resumeGame()
+                                }
+                            ),
+                            secondaryButton: .destructive(
+                                Text("Yes"),
+                                action: {
+                                    gameController.startGame()
+                                }
+                            )
+                        )
                     }
                     .padding()
                     .background(Color.black.opacity(0.5))
                     .cornerRadius(10)
                     .foregroundColor(.white)
-                    //                .alert(isPresented: $exitGameAlert) {
-                    //                    Alert(
-                    //                        title: Text("Do you really want to do it?"),
-                    //                        message: Text("This will end the game."),
-                    //                        primaryButton: .cancel(
-                    //                            Text("No"),
-                    //                            action: {
-                    //                                gameController.resumeGame()
-                    //                            }
-                    //                        ),
-                    //                        secondaryButton: .destructive(
-                    //                            Text("Yes"),
-                    //                            action: {
-                    //                                gameController.startGame()
-                    //                            }
-                    //                        )
-                    //                    )
-                    //                }
+                        
                     Spacer()
+                    
                     Button("Exit") {
-                        exitGameAlert.toggle()
-                        gameController.showMainMenu()
+                        exitGameAlert = true
+                        gameController.pauseGame()
+                    }
+                    .alert(isPresented: $exitGameAlert) {
+                        Alert(
+                            title: Text("Would you like to exit?"),
+                            message: Text("This will discard any of your game progress."),
+                            primaryButton: .cancel(
+                                Text("No"),
+                                action: {
+                                    gameController.resumeGame()
+                                }
+                            ),
+                            secondaryButton: .destructive(
+                                Text("Yes"),
+                                action: {
+                                    gameController.showMainMenu()
+                                }
+                            )
+                        )
                     }
                     .padding()
                     .background(Color.black.opacity(0.5))
                     .cornerRadius(10)
                     .foregroundColor(.white)
-                    //                .alert(isPresented: $exitGameAlert) {
-                    //                    Alert(
-                    //                        title: Text("Do you really want to exit?"),
-                    //                        message: Text("This will end the game."),
-                    //                        primaryButton: .cancel(
-                    //                            Text("No"),
-                    //                            action: {
-                    //                                gameController.resumeGame()
-                    //                            }
-                    //                        ),
-                    //                        secondaryButton: .destructive(
-                    //                            Text("Yes"),
-                    //                            action: {
-                    //                                gameController.showMainMenu()
-                    //                            }
-                    //                        )
-                    //                    )
-                    //                }
+                        
                 }
                 Spacer()
                 VStack {

@@ -28,9 +28,6 @@ class BeerPongView: ARView, ARSessionDelegate {
     var arView: ARView { return self }
     var gameController: GameController
     var collisionSubscribing:Cancellable?
-    
-    var throingEnabled = true
-
 
     private func setupWorldTracking() {
         let config = ARWorldTrackingConfiguration()
@@ -51,6 +48,7 @@ class BeerPongView: ARView, ARSessionDelegate {
             do {
                 self.gameController.gameAnchor = try result.get()
                 self.scene.anchors.append(self.gameController.gameAnchor)
+                self.gameController.objectsPlaced = true
             } catch {
                 fatalError("Couldn't load game scene")
             }
@@ -67,7 +65,7 @@ class BeerPongView: ARView, ARSessionDelegate {
     }
     
     func throwBall(force: Float) {
-        throingEnabled = false
+        self.gameController.throwingEnabled = false
         let ballMesh = MeshResource.generateSphere(radius: 0.038)
         let ballEntity = ModelEntity(mesh: ballMesh, materials: [SimpleMaterial(color: .white, isMetallic: false)])
         let sphereShape = ShapeResource.generateSphere(radius: 0.038)
@@ -80,31 +78,73 @@ class BeerPongView: ARView, ARSessionDelegate {
         let camera = AnchorEntity(.camera)
         scene.addAnchor(camera)
         camera.addChild(ballEntity)
-        ballEntity.addForce([0,(force*(0.5)),-force], relativeTo: camera)
+        ballEntity.addForce([0,0.01,-force], relativeTo: camera)
         
         self.collisionSubscribing = scene.subscribe(
             to: CollisionEvents.Began.self,
             on: ballEntity
         ) { event in
+            let table = self.gameController.gameAnchor.table
             let hitEntity = event.entityB
             if hitEntity.name.contains("cup") {
-                hitEntity.isEnabled = false
-                print("\(hitEntity.name) removed")
-                event.entityA.removeFromParent()
-                self.gameController.cupDown()
+                print(hitEntity.position(relativeTo: table))
+                if hitEntity.position(relativeTo: table).y > 50 {
+                    hitEntity.isEnabled = false
+                    print("\(hitEntity.name) removed")
+                    event.entityA.removeFromParent()
+                    self.gameController.cupDown()
+                    camera.removeFromParent()
+                    self.gameController.throwingEnabled = true
+                }
+            }
+        }
+        self.collisionSubscribing = scene.subscribe(
+            to: CollisionEvents.Updated.self,
+            on: ballEntity
+        ) { event in
+            let table = self.gameController.gameAnchor.table
+            let hitEntity = event.entityB
+            if hitEntity.name.contains("cup") {
+                if hitEntity.position(relativeTo: table).y > 50 {
+                    hitEntity.isEnabled = false
+                    print("\(hitEntity.name) removed")
+                    event.entityA.removeFromParent()
+                    self.gameController.cupDown()
+                    camera.removeFromParent()
+                    self.gameController.throwingEnabled = true
+                }
+            }
+        }
+        self.collisionSubscribing = scene.subscribe(
+            to: CollisionEvents.Ended.self,
+            on: ballEntity
+        ) { event in
+            let table = self.gameController.gameAnchor.table
+            let hitEntity = event.entityB
+            if hitEntity.name.contains("cup") {
+                if hitEntity.position(relativeTo: table).y > 50 {
+                    hitEntity.isEnabled = false
+                    print("\(hitEntity.name) removed")
+                    event.entityA.removeFromParent()
+                    self.gameController.cupDown()
+                    camera.removeFromParent()
+                    self.gameController.throwingEnabled = true
+                }
             }
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-//            self.gameController.resetCups()
-            camera.removeFromParent()
-            self.throingEnabled = true
+            if !self.gameController.throwingEnabled {
+                camera.removeFromParent()
+                self.gameController.throwingEnabled = true
+                
+            }
         }
     }
     
     
     @objc
     func handleTap(_ gestureRecognizer: UILongPressGestureRecognizer) {
-        if gameController.appState == .gamePlaying && throingEnabled {
+        if gameController.appState == .gamePlaying && self.gameController.throwingEnabled && !self.gameController.coaching {
             if gestureRecognizer.state == .began {
                 gameController.throwTap.touchDown()
             } else if gestureRecognizer.state == .ended {

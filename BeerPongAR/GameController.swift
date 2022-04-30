@@ -30,18 +30,30 @@ class GameController: ObservableObject {
     
     var throwTap = BallThrowTap()
     var gameTimer = Timer()
-    
+    var gamePlaying = false
     var gameStart = Date()
     var gameAnchor: GameExperience.Game!
     var cupNumber = 6
+    var coaching = false
+    var objectsPlaced = false
+    var throwingEnabled = false
     
     func selectLevel() {
-        self.gameTimer.invalidate()
+        self.throwingEnabled = false
         self.appState = .levelSelecting
+        self.gamePlaying = false
+        self.gameAnchor.notifications.resetToDefault.post()
+    }
+    
+    func initTimer() {
+        self.gameTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+            if (self.gamePlaying && !self.coaching && self.objectsPlaced) {
+                self.gameSeconds = self.gameSeconds + 0.1
+            }
+        }
     }
     
     func startGame() {
-        self.gameTimer.invalidate()
         switch self.gameLevel {
         case .easy:
             self.gameAnchor.notifications.positionEasyLevel.post()
@@ -57,33 +69,32 @@ class GameController: ObservableObject {
         self.gameStart = Date()
         self.appState = .gamePlaying
         self.gameSeconds = 0.0
-        for cup in self.gameAnchor.allCups {
-            cup?.isEnabled = true
-        }
         self.gameAnchor.notifications.revealCups.post()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.gameTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
-                self.gameSeconds = self.gameSeconds + 0.1
-            }
-        }
+        self.throwingEnabled = true
+        self.gamePlaying = true
     }
     
     func pauseGame() {
-        self.gameTimer.invalidate()
+        self.throwingEnabled = false
+        self.gamePlaying = false
     }
     
     func resumeGame() {
-        self.gameTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
-            self.gameSeconds = self.gameSeconds + 0.1
-        }
+        self.throwingEnabled = true
+        self.gamePlaying = true
     }
     
     func endGame() {
+        self.throwingEnabled = false
+        self.gamePlaying = false
         self.appState = .gameEnd
-        self.gameTimer.invalidate()
+        self.gameAnchor.notifications.resetToDefault.post()
     }
     
     func showMainMenu() {
+        self.gameAnchor.notifications.resetToDefault.post()
+        self.throwingEnabled = false
+        self.gamePlaying = false
         self.appState = .mainMenu
     }
     
@@ -123,7 +134,8 @@ extension GameExperience.Game {
             cup3,
             cup4,
             cup5,
-            cup6
+            cup6,
+            table
         ]
     }
 }

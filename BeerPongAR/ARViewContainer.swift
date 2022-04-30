@@ -14,6 +14,7 @@ struct ARViewContainer: UIViewRepresentable {
     func makeUIView(context: Context) -> BeerPongView {
         let arView = BeerPongView(frame: .zero, gameController: gameController)
         arView.setup()
+        gameController.initTimer()
         return arView
     }
     

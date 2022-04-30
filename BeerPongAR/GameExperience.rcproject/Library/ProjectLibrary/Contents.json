@@ -3,5 +3,15 @@
     "libraryIdentifier" : "e23c3bb5ddd20f510bba0716aaa96e1c",
     "format" : "model",
     "displayName" : "cup.usdz"
+  },
+  {
+    "libraryIdentifier" : "e8ffe032e86217b34a4184d04ef0fcd0",
+    "format" : "model",
+    "displayName" : "table.usdz"
+  },
+  {
+    "libraryIdentifier" : "890e78c1e877adfe74f94c4e0ce1295e",
+    "format" : "model",
+    "displayName" : "table.usdz"
   }
 ]
