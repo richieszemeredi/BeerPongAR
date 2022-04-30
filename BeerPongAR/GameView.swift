@@ -24,6 +24,7 @@ struct GameView : View {
                 Image("crosshair")
                     .resizable()
                     .frame(width: 50, height: 50, alignment: .center)
+                    .colorMultiply(gameController.throwingEnabled ? .green : .red)
                 Spacer()
             }
             VStack {
@@ -136,7 +137,8 @@ struct GameView : View {
                         .opacity(gameController.throwTap.currentTime == 0.0 ? 0 : 1)
                         .progressViewStyle(LinearProgressViewStyle(tint: gameController.throwTap.progressColor))
                         .scaleEffect(x: 1, y: 4, anchor: .center)
-                    Text("Press and hold the screen to throw a ball")
+                    Text("Press and hold the screen to throw a ball when the crosshair is green")
+                        .multilineTextAlignment(.center)
                         .padding(5)
                         .foregroundColor(.white.opacity(0.5))
                         .opacity(gameController.gameSeconds < 10 ? 1 : 0)

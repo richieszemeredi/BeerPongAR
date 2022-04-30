@@ -27,7 +27,9 @@ class GameController: ObservableObject {
     @Published var appState: AppState = .mainMenu
     @Published var gameSeconds = 0.0
     @Published var gameLevel: GameLevel = .easy
-    
+    @Published var objectsPlaced = false
+    @Published var throwingEnabled = false
+
     var throwTap = BallThrowTap()
     var gameTimer = Timer()
     var gamePlaying = false
@@ -35,8 +37,6 @@ class GameController: ObservableObject {
     var gameAnchor: GameExperience.Game!
     var cupNumber = 6
     var coaching = false
-    var objectsPlaced = false
-    var throwingEnabled = false
     
     func selectLevel() {
         self.throwingEnabled = false

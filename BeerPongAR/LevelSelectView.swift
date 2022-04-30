@@ -12,6 +12,8 @@ struct LevelSelectView: View {
 
     var body: some View {
         VStack{
+            Spacer()
+            
             Button("Easy") {
                 gameController.gameLevel = .easy
                 gameController.startGame()
@@ -41,9 +43,22 @@ struct LevelSelectView: View {
             .background(Color.black.opacity(0.5))
             .cornerRadius(5)
             .foregroundColor(.white)
+            
+            Spacer()
+            
+            Button("Main menu") {
+                gameController.showMainMenu()
+            }
+            .frame(maxWidth: .infinity)
+            .padding()
+            .background(Color.black.opacity(0.5))
+            .cornerRadius(5)
+            .foregroundColor(.white)
+            
+            Spacer()
         }
         .padding(50)
-        .frame(maxWidth: 200)
+        .frame(maxWidth: 250)
 
     }
 }

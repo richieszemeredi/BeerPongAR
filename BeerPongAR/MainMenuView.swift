@@ -27,6 +27,7 @@ struct MainMenuView: View {
                 Button("Start game") {
                     gameController.selectLevel()
                 }
+                .disabled(!gameController.objectsPlaced)
                 .frame(maxWidth: .infinity)
                 .padding()
                 .background(Color.black.opacity(0.5))

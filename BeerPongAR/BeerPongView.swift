@@ -58,7 +58,7 @@ class BeerPongView: ARView, ARSessionDelegate {
     func setup() {
         setupWorldTracking()
         loadGameScene()
-        
+        gameController.throwTap.initTimer()
         let tap = UILongPressGestureRecognizer(target: self, action: #selector(handleTap))
         tap.minimumPressDuration = 0
         addGestureRecognizer(tap)
@@ -84,54 +84,41 @@ class BeerPongView: ARView, ARSessionDelegate {
             to: CollisionEvents.Began.self,
             on: ballEntity
         ) { event in
+            
             let table = self.gameController.gameAnchor.table
             let hitEntity = event.entityB
             if hitEntity.name.contains("cup") {
-                print(hitEntity.position(relativeTo: table))
-                if hitEntity.position(relativeTo: table).y > 50 {
+                let dst = self.distanceBetweenEntities(ballEntity.position(relativeTo: nil), and: table!.position(relativeTo: nil))
+                if dst[1] > 0.9 {
                     hitEntity.isEnabled = false
                     print("\(hitEntity.name) removed")
                     event.entityA.removeFromParent()
                     self.gameController.cupDown()
+                    ballEntity.removeFromParent()
                     camera.removeFromParent()
                     self.gameController.throwingEnabled = true
                 }
             }
+            
+
         }
-        self.collisionSubscribing = scene.subscribe(
-            to: CollisionEvents.Updated.self,
-            on: ballEntity
-        ) { event in
-            let table = self.gameController.gameAnchor.table
-            let hitEntity = event.entityB
-            if hitEntity.name.contains("cup") {
-                if hitEntity.position(relativeTo: table).y > 50 {
-                    hitEntity.isEnabled = false
-                    print("\(hitEntity.name) removed")
-                    event.entityA.removeFromParent()
-                    self.gameController.cupDown()
-                    camera.removeFromParent()
-                    self.gameController.throwingEnabled = true
-                }
-            }
-        }
-        self.collisionSubscribing = scene.subscribe(
-            to: CollisionEvents.Ended.self,
-            on: ballEntity
-        ) { event in
-            let table = self.gameController.gameAnchor.table
-            let hitEntity = event.entityB
-            if hitEntity.name.contains("cup") {
-                if hitEntity.position(relativeTo: table).y > 50 {
-                    hitEntity.isEnabled = false
-                    print("\(hitEntity.name) removed")
-                    event.entityA.removeFromParent()
-                    self.gameController.cupDown()
-                    camera.removeFromParent()
-                    self.gameController.throwingEnabled = true
-                }
-            }
-        }
+//        self.collisionSubscribing = scene.subscribe(
+//            to: CollisionEvents.Updated.self,
+//            on: ballEntity
+//        ) { event in
+//            let table = self.gameController.gameAnchor.table
+//            let hitEntity = event.entityB
+//            if hitEntity.name.contains("cup") {
+//                if hitEntity.position(relativeTo: table).y > 50 {
+//                    hitEntity.isEnabled = false
+//                    print("\(hitEntity.name) removed")
+//                    event.entityA.removeFromParent()
+//                    self.gameController.cupDown()
+//                    camera.removeFromParent()
+//                    self.gameController.throwingEnabled = true
+//                }
+//            }
+//        }
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             if !self.gameController.throwingEnabled {
                 camera.removeFromParent()
@@ -141,20 +128,28 @@ class BeerPongView: ARView, ARSessionDelegate {
         }
     }
     
+    private func distanceBetweenEntities(_ a: SIMD3<Float>, and b: SIMD3<Float>) -> SIMD3<Float> {
+        var distance: SIMD3<Float> = [0, 0, 0]
+        distance.x = abs(a.x - b.x)
+        distance.y = abs(a.y - b.y)
+        distance.z = abs(a.z - b.z)
+        return distance
+    }
     
     @objc
     func handleTap(_ gestureRecognizer: UILongPressGestureRecognizer) {
         if gameController.appState == .gamePlaying && self.gameController.throwingEnabled && !self.gameController.coaching {
             if gestureRecognizer.state == .began {
                 gameController.throwTap.touchDown()
-            } else if gestureRecognizer.state == .ended {
-                gameController.throwTap.touchUp()
-                var ballForce = Float(gameController.throwTap.currentTime * 0.25)
+            }
+            if gestureRecognizer.state == .ended {
+                var ballForce = Float(gameController.throwTap.getTimeReset() * 0.35)
                 if (ballForce > 1) {
                     ballForce = 1
                 }
-                throwBall(force: ballForce)
-                gameController.throwTap.reset()
+                if (ballForce > 0.1){
+                    throwBall(force: ballForce)
+                }
             }
         }
     }

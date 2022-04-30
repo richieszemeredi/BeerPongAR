@@ -17,23 +17,22 @@ struct HighScoresView: View {
     var highScores: FetchedResults<HighScore>
     
     var body: some View {
-        VStack {
-            HStack {
-                Text("High Scores").font(.headline).padding()
-                Spacer()
-                Button("Close") {
-                    presentationMode.wrappedValue.dismiss()
-                }.padding()
+        NavigationView {
+            VStack {
+                List {
+                    ForEach(highScores) { highScore in
+                        HStack {
+                            Text(highScore.date?.formatted() ?? "Date error")
+                            Spacer()
+                            Text("\(highScore.seconds)")
+                        }.frame(height: 50)
+                    }
+                }.listStyle(.plain)
             }
-            List {
-                ForEach(highScores) { highScore in
-                    HStack {
-                        Text(highScore.date?.formatted() ?? "Date error")
-                        Spacer()
-                        Text("\(highScore.seconds)")
-                    }.frame(height: 50)
-                }
-            }.listStyle(.plain)
+            .navigationBarTitle(Text("High Scores"), displayMode: .inline)
+            .navigationBarItems(trailing: Button("Close") {
+                presentationMode.wrappedValue.dismiss()
+            })
         }
     }
 }

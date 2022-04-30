@@ -11,31 +11,41 @@ import SwiftUI
 class BallThrowTap: ObservableObject {
     @Published var currentTime = 0.0
     @Published var progressColor = Color(red: 0, green: 1, blue: 0)
-    private var timer = Timer()
+    private var time = 0.0
     private var red = 0.0
     private var green = 1.0
     private let MAX_TIME = 1.0
     
-    public func touchDown() {
-        self.timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
-            self.currentTime = self.currentTime + 0.01
-            self.setColor()
-            if self.currentTime >= self.MAX_TIME {
-                self.timer.invalidate()
+    private var touchDownTime = 0.0
+    private var throwing = false
+    
+    public func initTimer() {
+        let _ = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
+            self.time += 0.01
+            if self.throwing {
+                self.currentTime = self.time - self.touchDownTime
+                self.setColor()
             }
         }
     }
-    
-    public func touchUp() {
-        self.timer.invalidate()
+    public func touchDown() {
+        self.throwing = true
+        self.touchDownTime = self.time
     }
-
-    public func reset() {
+    
+    public func getTimeReset() -> Double {
+        self.throwing = false
+        var toReturn = 0.0
+        if self.currentTime > self.MAX_TIME {
+            toReturn = self.MAX_TIME
+        } else {
+            toReturn = self.currentTime
+        }
         self.currentTime = 0.0
         self.progressColor = Color(red: 0, green: 1, blue: 0)
         self.red = 0.0
         self.green = 1.0
-        self.timer.invalidate()
+        return toReturn
     }
     
     private func setColor() {
