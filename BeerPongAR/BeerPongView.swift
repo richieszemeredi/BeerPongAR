@@ -14,6 +14,7 @@ class BeerPongView: ARView, ARSessionDelegate {
     
     init(frame: CGRect, gameController: GameController) {
         self.gameController = gameController
+        self.collisionSubscribing = []
         super.init(frame: frame)
     }
     
@@ -27,8 +28,8 @@ class BeerPongView: ARView, ARSessionDelegate {
     
     var arView: ARView { return self }
     var gameController: GameController
-    var collisionSubscribing:Cancellable?
-
+    var collisionSubscribing: [Cancellable?]
+    
     private func setupWorldTracking() {
         let config = ARWorldTrackingConfiguration()
         config.planeDetection = [.horizontal]
@@ -80,18 +81,16 @@ class BeerPongView: ARView, ARSessionDelegate {
         camera.addChild(ballEntity)
         ballEntity.addForce([0,0.01,-force], relativeTo: camera)
         
-        self.collisionSubscribing = scene.subscribe(
+        self.collisionSubscribing.append(scene.subscribe(
             to: CollisionEvents.Began.self,
             on: ballEntity
         ) { event in
-            
             let table = self.gameController.gameAnchor.table
             let hitEntity = event.entityB
             if hitEntity.name.contains("cup") {
                 let dst = self.distanceBetweenEntities(ballEntity.position(relativeTo: nil), and: table!.position(relativeTo: nil))
                 if dst[1] > 0.9 {
                     hitEntity.isEnabled = false
-                    print("\(hitEntity.name) removed")
                     event.entityA.removeFromParent()
                     self.gameController.cupDown()
                     ballEntity.removeFromParent()
@@ -99,31 +98,31 @@ class BeerPongView: ARView, ARSessionDelegate {
                     self.gameController.throwingEnabled = true
                 }
             }
-            
-
-        }
-//        self.collisionSubscribing = scene.subscribe(
-//            to: CollisionEvents.Updated.self,
-//            on: ballEntity
-//        ) { event in
-//            let table = self.gameController.gameAnchor.table
-//            let hitEntity = event.entityB
-//            if hitEntity.name.contains("cup") {
-//                if hitEntity.position(relativeTo: table).y > 50 {
-//                    hitEntity.isEnabled = false
-//                    print("\(hitEntity.name) removed")
-//                    event.entityA.removeFromParent()
-//                    self.gameController.cupDown()
-//                    camera.removeFromParent()
-//                    self.gameController.throwingEnabled = true
-//                }
-//            }
-//        }
+        })
+        
+        self.collisionSubscribing.append(scene.subscribe(
+            to: CollisionEvents.Updated.self,
+            on: ballEntity
+        ) { event in
+            let table = self.gameController.gameAnchor.table
+            let hitEntity = event.entityB
+            if hitEntity.name.contains("cup") {
+                let dst = self.distanceBetweenEntities(ballEntity.position(relativeTo: nil), and: table!.position(relativeTo: nil))
+                if dst[1] > 0.9 {
+                    hitEntity.isEnabled = false
+                    event.entityA.removeFromParent()
+                    self.gameController.cupDown()
+                    camera.removeFromParent()
+                    self.gameController.throwingEnabled = true
+                }
+            }
+        })
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             if !self.gameController.throwingEnabled {
+                ballEntity.removeFromParent()
                 camera.removeFromParent()
                 self.gameController.throwingEnabled = true
-                
             }
         }
     }
@@ -135,7 +134,7 @@ class BeerPongView: ARView, ARSessionDelegate {
         distance.z = abs(a.z - b.z)
         return distance
     }
-    
+        
     @objc
     func handleTap(_ gestureRecognizer: UILongPressGestureRecognizer) {
         if gameController.appState == .gamePlaying && self.gameController.throwingEnabled && !self.gameController.coaching {
