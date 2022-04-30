@@ -24,6 +24,8 @@ enum GameLevel {
 }
     
 class GameController: ObservableObject {
+    let moc = PersistenceController.shared.container.viewContext
+
     @Published var appState: AppState = .mainMenu
     @Published var gameSeconds = 0.0
     @Published var gameLevel: GameLevel = .easy
@@ -89,6 +91,13 @@ class GameController: ObservableObject {
         self.gamePlaying = false
         self.appState = .gameEnd
         self.gameAnchor.notifications.resetToDefault.post()
+        
+        let highScore = HighScore(context: moc)
+        highScore.date = Date()
+        highScore.id = UUID()
+        highScore.seconds = gameSeconds
+        highScore.level = "\(self.gameLevel)"
+        try? moc.save()
     }
     
     func showMainMenu() {

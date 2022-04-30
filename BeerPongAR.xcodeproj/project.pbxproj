@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DB0258E0280EEE150001EC12 /* HighScoresModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DB0258DE280EEE150001EC12 /* HighScoresModel.xcdatamodeld */; };
+		DB2CFEB0281D8362001EBB11 /* HighScoresModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DB2CFEAE281D8362001EBB11 /* HighScoresModel.xcdatamodeld */; };
+		DB2CFEB2281D841C001EBB11 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2CFEB1281D841C001EBB11 /* Persistence.swift */; };
+		DB2CFEB3281D841C001EBB11 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2CFEB1281D841C001EBB11 /* Persistence.swift */; };
+		DB2CFEB4281D841C001EBB11 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2CFEB1281D841C001EBB11 /* Persistence.swift */; };
 		DB3142BE2815948C00DEC13D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3142BD2815948C00DEC13D /* ContentView.swift */; };
 		DB3142C02815A19F00DEC13D /* ARViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3142BF2815A19F00DEC13D /* ARViewContainer.swift */; };
 		DB3142C22815B5BC00DEC13D /* LevelSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3142C12815B5BC00DEC13D /* LevelSelectView.swift */; };
@@ -49,7 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		DB0258DF280EEE150001EC12 /* HighScoresModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HighScoresModel.xcdatamodel; sourceTree = "<group>"; };
+		DB2CFEAF281D8362001EBB11 /* HighScoresModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HighScoresModel.xcdatamodel; sourceTree = "<group>"; };
+		DB2CFEB1281D841C001EBB11 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		DB3142BD2815948C00DEC13D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DB3142BF2815A19F00DEC13D /* ARViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewContainer.swift; sourceTree = "<group>"; };
 		DB3142C12815B5BC00DEC13D /* LevelSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSelectView.swift; sourceTree = "<group>"; };
@@ -103,7 +107,6 @@
 		DBB124B827DE5B2C0024C53F = {
 			isa = PBXGroup;
 			children = (
-				DB0258DE280EEE150001EC12 /* HighScoresModel.xcdatamodeld */,
 				DBB124C327DE5B2C0024C53F /* BeerPongAR */,
 				DBB124D627DE5B2D0024C53F /* BeerPongARTests */,
 				DBB124E027DE5B2D0024C53F /* BeerPongARUITests */,
@@ -124,6 +127,7 @@
 		DBB124C327DE5B2C0024C53F /* BeerPongAR */ = {
 			isa = PBXGroup;
 			children = (
+				DB2CFEAE281D8362001EBB11 /* HighScoresModel.xcdatamodeld */,
 				DBB124C427DE5B2C0024C53F /* BeerPongARApp.swift */,
 				DB3142BD2815948C00DEC13D /* ContentView.swift */,
 				DB3142BF2815A19F00DEC13D /* ARViewContainer.swift */,
@@ -131,6 +135,7 @@
 				DBCC329E280DD2C9001C8C81 /* HighScoresView.swift */,
 				DB3142C12815B5BC00DEC13D /* LevelSelectView.swift */,
 				DBB124C627DE5B2C0024C53F /* GameView.swift */,
+				DB2CFEB1281D841C001EBB11 /* Persistence.swift */,
 				DBAEE210281305A1003C4CC4 /* EndView.swift */,
 				DB42324728118FAD004B5946 /* BeerPongView.swift */,
 				DB42324B2811F49A004B5946 /* BeerPongView+Coaching.swift */,
@@ -306,8 +311,10 @@
 			files = (
 				DB3142C22815B5BC00DEC13D /* LevelSelectView.swift in Sources */,
 				DB42324A2811DF2C004B5946 /* BallThrowTap.swift in Sources */,
+				DB2CFEB2281D841C001EBB11 /* Persistence.swift in Sources */,
 				DB36346327FCC6E1000F6222 /* GameExperience.rcproject in Sources */,
 				DB3142BE2815948C00DEC13D /* ContentView.swift in Sources */,
+				DB2CFEB0281D8362001EBB11 /* HighScoresModel.xcdatamodeld in Sources */,
 				DBB501A427F0858D0092F8EC /* MainMenuView.swift in Sources */,
 				DBCC329F280DD2C9001C8C81 /* HighScoresView.swift in Sources */,
 				DBB124C727DE5B2C0024C53F /* GameView.swift in Sources */,
@@ -315,7 +322,6 @@
 				DBB124C527DE5B2C0024C53F /* BeerPongARApp.swift in Sources */,
 				DB42324C2811F49A004B5946 /* BeerPongView+Coaching.swift in Sources */,
 				DB67AC1D280D834F00F4A11C /* CupTester.rcproject in Sources */,
-				DB0258E0280EEE150001EC12 /* HighScoresModel.xcdatamodeld in Sources */,
 				DBAEE211281305A1003C4CC4 /* EndView.swift in Sources */,
 				DB36346127FCB51F000F6222 /* GameController.swift in Sources */,
 				DB3142C02815A19F00DEC13D /* ARViewContainer.swift in Sources */,
@@ -326,6 +332,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB2CFEB3281D841C001EBB11 /* Persistence.swift in Sources */,
 				DB67AC1E280D835000F4A11C /* CupTester.rcproject in Sources */,
 				DBB124D827DE5B2D0024C53F /* BeerPongARTests.swift in Sources */,
 			);
@@ -336,6 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB67AC1F280D835000F4A11C /* CupTester.rcproject in Sources */,
+				DB2CFEB4281D841C001EBB11 /* Persistence.swift in Sources */,
 				DBB124E227DE5B2D0024C53F /* BeerPongARUITests.swift in Sources */,
 				DBB124E427DE5B2D0024C53F /* BeerPongARUITestsLaunchTests.swift in Sources */,
 			);
@@ -661,12 +669,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		DB0258DE280EEE150001EC12 /* HighScoresModel.xcdatamodeld */ = {
+		DB2CFEAE281D8362001EBB11 /* HighScoresModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				DB0258DF280EEE150001EC12 /* HighScoresModel.xcdatamodel */,
+				DB2CFEAF281D8362001EBB11 /* HighScoresModel.xcdatamodel */,
 			);
-			currentVersion = DB0258DF280EEE150001EC12 /* HighScoresModel.xcdatamodel */;
+			currentVersion = DB2CFEAF281D8362001EBB11 /* HighScoresModel.xcdatamodel */;
 			path = HighScoresModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

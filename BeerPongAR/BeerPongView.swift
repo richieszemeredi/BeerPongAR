@@ -34,7 +34,7 @@ class BeerPongView: ARView, ARSessionDelegate {
         let config = ARWorldTrackingConfiguration()
         config.planeDetection = [.horizontal]
         session.run(config)
-        self.debugOptions = [.showFeaturePoints, .showPhysics, .showAnchorGeometry, .showWorldOrigin, .showAnchorOrigins, .showSceneUnderstanding]
+//        self.debugOptions = [.showFeaturePoints, .showPhysics, .showAnchorGeometry, .showWorldOrigin, .showAnchorOrigins, .showSceneUnderstanding]
         
         let coachingOverlay = ARCoachingOverlayView()
         coachingOverlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]

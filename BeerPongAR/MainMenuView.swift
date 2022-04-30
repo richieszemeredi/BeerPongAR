@@ -11,6 +11,8 @@ struct MainMenuView: View {
     @ObservedObject var gameController: GameController
     @State var showHighScores = false
     
+    let persistenceController = PersistenceController.shared
+    
     var body: some View {
         VStack {
             VStack {
@@ -48,7 +50,8 @@ struct MainMenuView: View {
         }
         .padding()
         .sheet(isPresented: $showHighScores) {
-            HighScoresView()
+            HighScoresView().environment(\.managedObjectContext, persistenceController.container.viewContext)
+
         }
     }
 }
