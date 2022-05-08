@@ -35,7 +35,6 @@ class GameController: ObservableObject {
     var throwTap = BallThrowTap()
     var gameTimer = Timer()
     var gamePlaying = false
-    var gameStart = Date()
     var gameAnchor: GameExperience.Game!
     var cupNumber = 6
     var coaching = false
@@ -68,10 +67,10 @@ class GameController: ObservableObject {
             break
         }
         self.cupNumber = 6
-        self.gameStart = Date()
         self.appState = .gamePlaying
         self.gameSeconds = 0.0
         self.gameAnchor.notifications.revealCups.post()
+        self.gameAnchor.notifications.revealTable.post()
         self.throwingEnabled = true
         self.gamePlaying = true
     }
@@ -91,7 +90,7 @@ class GameController: ObservableObject {
         self.gamePlaying = false
         self.appState = .gameEnd
         self.gameAnchor.notifications.resetToDefault.post()
-        
+        self.gameAnchor.notifications.hideTable.post()
         let highScore = HighScore(context: moc)
         highScore.date = Date()
         highScore.id = UUID()
@@ -101,6 +100,8 @@ class GameController: ObservableObject {
     }
     
     func showMainMenu() {
+        self.gameAnchor.notifications.hideCups.post()
+        self.gameAnchor.notifications.hideTable.post()
         self.gameAnchor.notifications.resetToDefault.post()
         self.throwingEnabled = false
         self.gamePlaying = false
@@ -114,24 +115,6 @@ class GameController: ObservableObject {
            endGame()
         }
     }
-    
-//    func resetCups() {
-//        switch self.gameLevel {
-//        case .easy:
-////            self.gameAnchor.notifications.repositionEasyLevel.post()
-//            break
-//        case .medium:
-////            self.gameAnchor.notifications.repositionMediumLevel.post()
-//            break
-//        case .hard:
-////            self.gameAnchor.notifications.repositionHardLevel.post()
-////            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-////                self.gameAnchor.notifications.startHardLevel.post()
-////            }
-//            break
-//        }
-//    }
-//
 }
 
 

@@ -34,7 +34,7 @@ class BeerPongView: ARView, ARSessionDelegate {
         let config = ARWorldTrackingConfiguration()
         config.planeDetection = [.horizontal]
         session.run(config)
-//        self.debugOptions = [.showFeaturePoints, .showPhysics, .showAnchorGeometry, .showWorldOrigin, .showAnchorOrigins, .showSceneUnderstanding]
+        self.debugOptions = [.showFeaturePoints, .showPhysics, .showAnchorGeometry, .showWorldOrigin, .showAnchorOrigins, .showSceneUnderstanding]
         
         let coachingOverlay = ARCoachingOverlayView()
         coachingOverlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -88,7 +88,7 @@ class BeerPongView: ARView, ARSessionDelegate {
             let table = self.gameController.gameAnchor.table
             let hitEntity = event.entityB
             if hitEntity.name.contains("cup") {
-                let dst = self.distanceBetweenEntities(ballEntity.position(relativeTo: nil), and: table!.position(relativeTo: nil))
+                let dst = self.distanceBetweenEntities(ballEntity, and: table!)
                 if dst[1] > 0.9 {
                     hitEntity.isEnabled = false
                     event.entityA.removeFromParent()
@@ -96,6 +96,7 @@ class BeerPongView: ARView, ARSessionDelegate {
                     ballEntity.removeFromParent()
                     camera.removeFromParent()
                     self.gameController.throwingEnabled = true
+                    self.collisionSubscribing.removeAll()
                 }
             }
         })
@@ -107,19 +108,21 @@ class BeerPongView: ARView, ARSessionDelegate {
             let table = self.gameController.gameAnchor.table
             let hitEntity = event.entityB
             if hitEntity.name.contains("cup") {
-                let dst = self.distanceBetweenEntities(ballEntity.position(relativeTo: nil), and: table!.position(relativeTo: nil))
+                let dst = self.distanceBetweenEntities(ballEntity, and: table!)
                 if dst[1] > 0.9 {
                     hitEntity.isEnabled = false
                     event.entityA.removeFromParent()
                     self.gameController.cupDown()
                     camera.removeFromParent()
                     self.gameController.throwingEnabled = true
+                    self.collisionSubscribing.removeAll()
                 }
             }
         })
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             if !self.gameController.throwingEnabled {
+                self.collisionSubscribing.removeAll()
                 ballEntity.removeFromParent()
                 camera.removeFromParent()
                 self.gameController.throwingEnabled = true
@@ -127,7 +130,9 @@ class BeerPongView: ARView, ARSessionDelegate {
         }
     }
     
-    private func distanceBetweenEntities(_ a: SIMD3<Float>, and b: SIMD3<Float>) -> SIMD3<Float> {
+    private func distanceBetweenEntities(_ aEntity: Entity, and bEntity: Entity) -> SIMD3<Float> {
+        let a = aEntity.position(relativeTo: nil)
+        let b = bEntity.position(relativeTo: nil)
         var distance: SIMD3<Float> = [0, 0, 0]
         distance.x = abs(a.x - b.x)
         distance.y = abs(a.y - b.y)

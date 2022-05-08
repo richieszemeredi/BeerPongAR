@@ -1,6 +1,6 @@
 //
 //  Persistence.swift
-//  CoreDataTest
+//  BeerPongAR
 //
 //  Created by Richárd Szemerédi on 2022. 04. 23..
 //
@@ -13,10 +13,24 @@ struct PersistenceController {
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        for _ in 0..<10 {
+        for _ in 0..<3 {
             let newScore = HighScore(context: viewContext)
             newScore.date = Date()
-            newScore.seconds = 3.2
+            newScore.seconds = Double.random(in: 32.2 ..< 231.3)
+            newScore.level = "easy"
+            newScore.id = UUID()
+        }
+        for _ in 0..<4 {
+            let newScore = HighScore(context: viewContext)
+            newScore.date = Date()
+            newScore.seconds = Double.random(in: 32.2 ..< 231.3)
+            newScore.level = "medium"
+            newScore.id = UUID()
+        }
+        for _ in 0..<2 {
+            let newScore = HighScore(context: viewContext)
+            newScore.date = Date()
+            newScore.seconds = Double.random(in: 32.2 ..< 231.3)
             newScore.level = "hard"
             newScore.id = UUID()
         }

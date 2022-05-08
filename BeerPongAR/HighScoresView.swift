@@ -14,7 +14,7 @@ struct HighScoresView: View {
 
     @SectionedFetchRequest<String?, HighScore>(
         sectionIdentifier: \.level,
-        sortDescriptors: [SortDescriptor(\.date, order: .reverse)]
+        sortDescriptors: [SortDescriptor(\.seconds, order: .forward)]
     )
     private var highScores: SectionedFetchResults<String?, HighScore>
     

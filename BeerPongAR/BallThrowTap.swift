@@ -41,11 +41,15 @@ class BallThrowTap: ObservableObject {
         } else {
             toReturn = self.currentTime
         }
+        resetTime()
+        return toReturn
+    }
+    
+    private func resetTime() {
         self.currentTime = 0.0
         self.progressColor = Color(red: 0, green: 1, blue: 0)
         self.red = 0.0
         self.green = 1.0
-        return toReturn
     }
     
     private func setColor() {

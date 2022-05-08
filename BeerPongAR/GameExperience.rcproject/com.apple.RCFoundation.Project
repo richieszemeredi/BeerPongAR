@@ -126,7 +126,7 @@
                                           "linearCoefficient" : 1,
                                           "location" : [
                                             0,
-                                            0.71079999208450317,
+                                            0.71200001239776611,
                                             -0.60000002384185791
                                           ],
                                           "moveEase" : "easeInOut",
@@ -163,7 +163,7 @@
                                           "linearCoefficient" : 1,
                                           "location" : [
                                             0.05000000074505806,
-                                            0.71079999208450317,
+                                            0.71200001239776611,
                                             -0.69999998807907104
                                           ],
                                           "moveEase" : "easeInOut",
@@ -200,7 +200,7 @@
                                           "linearCoefficient" : 1,
                                           "location" : [
                                             -0.05000000074505806,
-                                            0.71079999208450317,
+                                            0.71200001239776611,
                                             -0.69999998807907104
                                           ],
                                           "moveEase" : "easeInOut",
@@ -237,7 +237,7 @@
                                           "linearCoefficient" : 1,
                                           "location" : [
                                             0.10000000149011612,
-                                            0.71079999208450317,
+                                            0.71200001239776611,
                                             -0.80000001192092896
                                           ],
                                           "moveEase" : "easeInOut",
@@ -274,7 +274,7 @@
                                           "linearCoefficient" : 1,
                                           "location" : [
                                             0,
-                                            0.71079999208450317,
+                                            0.71200001239776611,
                                             -0.80000001192092896
                                           ],
                                           "moveEase" : "easeInOut",
@@ -311,7 +311,7 @@
                                           "linearCoefficient" : 1,
                                           "location" : [
                                             -0.10000000149011612,
-                                            0.71079999208450317,
+                                            0.71200001239776611,
                                             -0.80000001192092896
                                           ],
                                           "moveEase" : "easeInOut",
@@ -404,7 +404,7 @@
                                           "linearCoefficient" : 1,
                                           "location" : [
                                             0.40000000596046448,
-                                            0.71079999208450317,
+                                            0.71200001239776611,
                                             -0.40000000596046448
                                           ],
                                           "moveEase" : "easeInOut",
@@ -441,7 +441,7 @@
                                           "linearCoefficient" : 1,
                                           "location" : [
                                             -0.40000000596046448,
-                                            0.71079999208450317,
+                                            0.71200001239776611,
                                             -0.40000000596046448
                                           ],
                                           "moveEase" : "easeInOut",
@@ -478,7 +478,7 @@
                                           "linearCoefficient" : 1,
                                           "location" : [
                                             -0.10000000149011612,
-                                            0.71079999208450317,
+                                            0.71200001239776611,
                                             -0.60000002384185791
                                           ],
                                           "moveEase" : "easeInOut",
@@ -515,7 +515,7 @@
                                           "linearCoefficient" : 1,
                                           "location" : [
                                             0.40000000596046448,
-                                            0.71079999208450317,
+                                            0.71200001239776611,
                                             -0.80000001192092896
                                           ],
                                           "moveEase" : "easeInOut",
@@ -552,7 +552,7 @@
                                           "linearCoefficient" : 1,
                                           "location" : [
                                             0.10000000149011612,
-                                            0.71079999208450317,
+                                            0.71200001239776611,
                                             -0.60000002384185791
                                           ],
                                           "moveEase" : "easeInOut",
@@ -589,7 +589,7 @@
                                           "linearCoefficient" : 1,
                                           "location" : [
                                             -0.40000000596046448,
-                                            0.71079999208450317,
+                                            0.71200001239776611,
                                             -0.80000001192092896
                                           ],
                                           "moveEase" : "easeInOut",
@@ -682,7 +682,7 @@
                                           "linearCoefficient" : 1,
                                           "location" : [
                                             0,
-                                            0.71079999208450317,
+                                            0.71200001239776611,
                                             0
                                           ],
                                           "moveEase" : "easeInOut",
@@ -719,7 +719,7 @@
                                           "linearCoefficient" : 1,
                                           "location" : [
                                             0,
-                                            0.71079999208450317,
+                                            0.71200001239776611,
                                             -0.10000000149011612
                                           ],
                                           "moveEase" : "easeInOut",
@@ -756,7 +756,7 @@
                                           "linearCoefficient" : 1,
                                           "location" : [
                                             0,
-                                            0.71079999208450317,
+                                            0.71200001239776611,
                                             0.10000000149011612
                                           ],
                                           "moveEase" : "easeInOut",
@@ -793,7 +793,7 @@
                                           "linearCoefficient" : 1,
                                           "location" : [
                                             0,
-                                            0.71079999208450317,
+                                            0.71200001239776611,
                                             -0.20000000298023224
                                           ],
                                           "moveEase" : "easeInOut",
@@ -830,7 +830,7 @@
                                           "linearCoefficient" : 1,
                                           "location" : [
                                             0,
-                                            0.71079999208450317,
+                                            0.71200001239776611,
                                             0.20000000298023224
                                           ],
                                           "moveEase" : "easeInOut",
@@ -867,7 +867,7 @@
                                           "linearCoefficient" : 1,
                                           "location" : [
                                             0,
-                                            0.71079999208450317,
+                                            0.71200001239776611,
                                             -0.80000001192092896
                                           ],
                                           "moveEase" : "easeInOut",
@@ -1049,7 +1049,7 @@
                                           "linearCoefficient" : 1,
                                           "location" : [
                                             -0.05000000074505806,
-                                            0.71079999208450317,
+                                            0.71200001239776611,
                                             -0.10000000149011612
                                           ],
                                           "moveEase" : "easeInOut",
@@ -1086,7 +1086,7 @@
                                           "linearCoefficient" : 1,
                                           "location" : [
                                             -0.05000000074505806,
-                                            0.71079999208450317,
+                                            0.71200001239776611,
                                             0
                                           ],
                                           "moveEase" : "easeInOut",
@@ -1123,7 +1123,7 @@
                                           "linearCoefficient" : 1,
                                           "location" : [
                                             -0.05000000074505806,
-                                            0.71079999208450317,
+                                            0.71200001239776611,
                                             0.10000000149011612
                                           ],
                                           "moveEase" : "easeInOut",
@@ -1160,7 +1160,7 @@
                                           "linearCoefficient" : 1,
                                           "location" : [
                                             0.05000000074505806,
-                                            0.71079999208450317,
+                                            0.71200001239776611,
                                             -0.10000000149011612
                                           ],
                                           "moveEase" : "easeInOut",
@@ -1197,7 +1197,7 @@
                                           "linearCoefficient" : 1,
                                           "location" : [
                                             0.05000000074505806,
-                                            0.71079999208450317,
+                                            0.71200001239776611,
                                             0
                                           ],
                                           "moveEase" : "easeInOut",
@@ -1234,7 +1234,7 @@
                                           "linearCoefficient" : 1,
                                           "location" : [
                                             0.05000000074505806,
-                                            0.71079999208450317,
+                                            0.71200001239776611,
                                             0.10000000149011612
                                           ],
                                           "moveEase" : "easeInOut",
@@ -1290,6 +1290,264 @@
                                 "name" : "custom"
                               },
                               "identifier" : "20C42D24-5E1D-4D66-8669-6EA54AC773F8",
+                              "isEnabled" : true
+                            }
+                          ],
+                          "__version" : 1
+                        }
+                      ]
+                    }
+                  ],
+                  "__version" : 3
+                },
+                {
+                  "__content" : [
+                    {
+                      "accessibility" : {
+                        "__content" : [
+                          {
+                            "isEnabled" : false
+                          }
+                        ],
+                        "__version" : 1
+                      },
+                      "actionGroups" : [
+                        {
+                          "__content" : [
+                            {
+                              "configurations" : [
+                                {
+                                  "__content" : [
+                                    {
+                                      "configurationBox" : {
+                                        "configuration" : {
+                                          "angularCoefficient" : 1,
+                                          "animationStyle" : "basic",
+                                          "buildOutAnimationType" : "none",
+                                          "distance" : 1,
+                                          "duration" : 0,
+                                          "fadeOut" : true,
+                                          "linearCoefficient" : 1,
+                                          "moveEase" : "easeInOut",
+                                          "respectPhysics" : false,
+                                          "target" : [
+                                            "54AB5B33-B4EF-4E44-A2A0-151EF9F1B91D",
+                                            "5749E7A3-09DB-4E5C-8A93-9841708D27C8",
+                                            "847177A2-9D00-4425-B3F7-5F70D0DED389",
+                                            "69A13A79-7F89-4C4D-8603-EA20CC9E1614",
+                                            "7CE1C946-5886-4716-BF3E-E6F4EE5C3DEA",
+                                            "BCFA2805-C8FC-4588-944F-D7E820859951",
+                                            "35295059-5812-4800-BBC0-7332E68E751E"
+                                          ]
+                                        },
+                                        "name" : {
+                                          "type" : "hide"
+                                        }
+                                      },
+                                      "identifier" : "735435F4-062C-4526-BB06-2D01C713F447",
+                                      "isEnabled" : true
+                                    }
+                                  ],
+                                  "__version" : 1
+                                }
+                              ],
+                              "identifier" : "0EFAEEA5-3DE2-4BFE-958A-427415489615",
+                              "isEnabled" : true
+                            }
+                          ],
+                          "__version" : 1
+                        }
+                      ],
+                      "color" : [
+                        0.88235294818878174,
+                        0.48235294222831726,
+                        0.68627452850341797,
+                        1
+                      ],
+                      "identifier" : "2717C564-46CF-45EC-B8CD-0613D5D23C12",
+                      "isEnabled" : true,
+                      "isLooping" : false,
+                      "isModal" : false,
+                      "name" : "Start Hidden",
+                      "triggers" : [
+                        {
+                          "__content" : [
+                            {
+                              "configurationBox" : {
+                                "configuration" : {
+
+                                },
+                                "name" : "start"
+                              },
+                              "identifier" : "72042477-2844-416F-B5C2-11546B0806CA",
+                              "isEnabled" : true
+                            }
+                          ],
+                          "__version" : 1
+                        }
+                      ]
+                    }
+                  ],
+                  "__version" : 3
+                },
+                {
+                  "__content" : [
+                    {
+                      "accessibility" : {
+                        "__content" : [
+                          {
+                            "isEnabled" : false
+                          }
+                        ],
+                        "__version" : 1
+                      },
+                      "actionGroups" : [
+                        {
+                          "__content" : [
+                            {
+                              "configurations" : [
+                                {
+                                  "__content" : [
+                                    {
+                                      "configurationBox" : {
+                                        "configuration" : {
+                                          "angularCoefficient" : 1,
+                                          "animationStyle" : "basic",
+                                          "buildInAnimationType" : "none",
+                                          "distance" : 1,
+                                          "duration" : 1,
+                                          "fadeIn" : true,
+                                          "linearCoefficient" : 1,
+                                          "moveEase" : "easeInOut",
+                                          "respectPhysics" : false,
+                                          "target" : [
+                                            "54AB5B33-B4EF-4E44-A2A0-151EF9F1B91D"
+                                          ]
+                                        },
+                                        "name" : {
+                                          "type" : "show"
+                                        }
+                                      },
+                                      "identifier" : "A77E1224-CA9A-498D-B9BD-1ED8BD5F6DC9",
+                                      "isEnabled" : true
+                                    }
+                                  ],
+                                  "__version" : 1
+                                }
+                              ],
+                              "identifier" : "464046E1-4911-445A-9EAD-5EDDA3FE6193",
+                              "isEnabled" : true
+                            }
+                          ],
+                          "__version" : 1
+                        }
+                      ],
+                      "color" : [
+                        0.49803921580314636,
+                        0.52941179275512695,
+                        0.61960786581039429,
+                        1
+                      ],
+                      "identifier" : "DBB79CEF-CF24-418D-AC54-624F036F6143",
+                      "isEnabled" : true,
+                      "isLooping" : false,
+                      "isModal" : false,
+                      "name" : "Reveal Table",
+                      "triggers" : [
+                        {
+                          "__content" : [
+                            {
+                              "configurationBox" : {
+                                "configuration" : {
+                                  "userIdentifier" : "revealTable"
+                                },
+                                "name" : "custom"
+                              },
+                              "identifier" : "E7C9965A-ADA2-461D-A4CB-7857E9F685EE",
+                              "isEnabled" : true
+                            }
+                          ],
+                          "__version" : 1
+                        }
+                      ]
+                    }
+                  ],
+                  "__version" : 3
+                },
+                {
+                  "__content" : [
+                    {
+                      "accessibility" : {
+                        "__content" : [
+                          {
+                            "isEnabled" : false
+                          }
+                        ],
+                        "__version" : 1
+                      },
+                      "actionGroups" : [
+                        {
+                          "__content" : [
+                            {
+                              "configurations" : [
+                                {
+                                  "__content" : [
+                                    {
+                                      "configurationBox" : {
+                                        "configuration" : {
+                                          "angularCoefficient" : 1,
+                                          "animationStyle" : "basic",
+                                          "buildOutAnimationType" : "none",
+                                          "distance" : 1,
+                                          "duration" : 1,
+                                          "fadeOut" : true,
+                                          "linearCoefficient" : 1,
+                                          "moveEase" : "easeInOut",
+                                          "respectPhysics" : false,
+                                          "target" : [
+                                            "54AB5B33-B4EF-4E44-A2A0-151EF9F1B91D"
+                                          ]
+                                        },
+                                        "name" : {
+                                          "type" : "hide"
+                                        }
+                                      },
+                                      "identifier" : "A02CAF6B-0953-4AF3-AEE9-209262BF8922",
+                                      "isEnabled" : true
+                                    }
+                                  ],
+                                  "__version" : 1
+                                }
+                              ],
+                              "identifier" : "29B1A8E1-D9FE-4D12-B540-F2D6015C73B8",
+                              "isEnabled" : true
+                            }
+                          ],
+                          "__version" : 1
+                        }
+                      ],
+                      "color" : [
+                        0.49803921580314636,
+                        0.50196081399917603,
+                        0.52549022436141968,
+                        1
+                      ],
+                      "identifier" : "3D17C603-03BF-4E0A-9E4C-EDC912762126",
+                      "isEnabled" : true,
+                      "isLooping" : false,
+                      "isModal" : false,
+                      "name" : "Hide Table",
+                      "triggers" : [
+                        {
+                          "__content" : [
+                            {
+                              "configurationBox" : {
+                                "configuration" : {
+                                  "userIdentifier" : "hideTable"
+                                },
+                                "name" : "custom"
+                              },
+                              "identifier" : "E804FBAA-1033-47E9-87F9-8E083D41358B",
                               "isEnabled" : true
                             }
                           ],
@@ -1457,7 +1715,7 @@
                         0.49999871850013733,
                         0,
                         0.05000000074505806,
-                        0.71083801984786987,
+                        0.71200001239776611,
                         -0.10000000149011612,
                         1
                       ]
@@ -1584,17 +1842,17 @@
                     },
                     "transform" : {
                       "matrix" : [
-                        5.9604641222676946e-08,
+                        5.9604623459108552e-08,
                         0,
-                        -0.99999988079071045,
-                        0,
-                        0,
-                        0.99999988079071045,
+                        -0.99999958276748657,
                         0,
                         0,
                         0.99999988079071045,
                         0,
-                        5.9604641222676946e-08,
+                        0,
+                        0.99999958276748657,
+                        0,
+                        5.9604623459108552e-08,
                         0,
                         0,
                         0,
@@ -1754,7 +2012,7 @@
                         0.49999883770942688,
                         0,
                         0.05000000074505806,
-                        0.71083801984786987,
+                        0.71200001239776611,
                         0.10000000149011612,
                         1
                       ]
@@ -1913,7 +2171,7 @@
                         0.49999871850013733,
                         0,
                         -0.05000000074505806,
-                        0.71083801984786987,
+                        0.71200001239776611,
                         0.10000000149011612,
                         1
                       ]
@@ -2070,7 +2328,7 @@
                         0.49999871850013733,
                         0,
                         -0.05000000074505806,
-                        0.71083801984786987,
+                        0.71200001239776611,
                         -0.10000000149011612,
                         1
                       ]
@@ -2233,7 +2491,7 @@
                         0.49999871850013733,
                         0,
                         0.05000000074505806,
-                        0.71083801984786987,
+                        0.71200001239776611,
                         0,
                         1
                       ]
@@ -2389,7 +2647,7 @@
                         0.49999871850013733,
                         0,
                         -0.05000000074505806,
-                        0.71083801984786987,
+                        0.71200001239776611,
                         0,
                         1
                       ]
@@ -2412,21 +2670,21 @@
               "title" : "Game",
               "viewTransform" : {
                 "cameraTransform" : [
-                  0.073797203600406647,
-                  -2.2837130586594867e-07,
-                  0.99727332592010498,
+                  -0.067698024213314056,
+                  -2.4729368419684761e-07,
+                  0.99770587682723999,
                   0,
-                  0.95670205354690552,
-                  0.28232806921005249,
-                  -0.07079518586397171,
+                  0.24593344330787659,
+                  0.96914297342300415,
+                  0.016687432304024696,
                   0,
-                  -0.28155827522277832,
-                  0.95931792259216309,
-                  0.020835692062973976,
+                  -0.96691977977752686,
+                  0.24649900197982788,
+                  -0.065608523786067963,
                   0,
-                  -0.95057016611099243,
-                  2.7125039100646973,
-                  0.1203167587518692,
+                  -0.45824050903320312,
+                  0.78835391998291016,
+                  -0.022850275039672852,
                   1
                 ],
                 "sceneTransform" : [
