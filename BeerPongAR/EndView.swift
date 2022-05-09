@@ -14,11 +14,11 @@ struct EndView: View {
         VStack {
             VStack {
             Text("Game Over")
-                .padding()
                 .font(.largeTitle)
-                .background(Color.black.opacity(0.5))
+                .padding()
+                .foregroundColor(.primary)
+                .background(.ultraThinMaterial)
                 .cornerRadius(10)
-                .foregroundColor(.white)
             }.padding(.top)
             Spacer()
             HStack {
@@ -30,9 +30,9 @@ struct EndView: View {
                     .font(.largeTitle)
             }
             .padding()
-            .background(Color.black.opacity(0.5))
+            .foregroundColor(.primary)
+            .background(.ultraThinMaterial)
             .cornerRadius(10)
-            .foregroundColor(.white)
             Spacer()
             VStack {
                 Button("Start again") {
@@ -40,27 +40,27 @@ struct EndView: View {
                 }
                 .frame(maxWidth: .infinity)
                 .padding()
-                .background(Color.black.opacity(0.5))
+                .foregroundColor(.primary)
+                .background(.ultraThinMaterial)
                 .cornerRadius(10)
-                .foregroundColor(.white)
                 
                 Button("Choose another level") {
                     gameController.selectLevel()
                 }
                 .frame(maxWidth: .infinity)
                 .padding()
-                .background(Color.black.opacity(0.5))
+                .foregroundColor(.primary)
+                .background(.ultraThinMaterial)
                 .cornerRadius(10)
-                .foregroundColor(.white)
                 
                 Button ("Go to main menu") {
                     gameController.showMainMenu()
                 }
                 .frame(maxWidth: .infinity)
                 .padding()
-                .background(Color.black.opacity(0.5))
+                .foregroundColor(.primary)
+                .background(.ultraThinMaterial)
                 .cornerRadius(10)
-                .foregroundColor(.white)
             }
             .fixedSize(horizontal: true, vertical: false)
         }.padding()

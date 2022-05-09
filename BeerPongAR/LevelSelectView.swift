@@ -19,30 +19,30 @@ struct LevelSelectView: View {
                 gameController.startGame()
             }
             .frame(maxWidth: .infinity)
+            .foregroundColor(.primary)
             .padding()
-            .background(Color.black.opacity(0.5))
-            .cornerRadius(5)
-            .foregroundColor(.white)
-            
+            .background(.ultraThinMaterial)
+            .cornerRadius(10)
+
             Button("Medium") {
                 gameController.gameLevel = .medium
                 gameController.startGame()
             }
             .frame(maxWidth: .infinity)
+            .foregroundColor(.primary)
             .padding()
-            .background(Color.black.opacity(0.5))
-            .cornerRadius(5)
-            .foregroundColor(.white)
+            .background(.ultraThinMaterial)
+            .cornerRadius(10)
             
             Button("Hard") {
                 gameController.gameLevel = .hard
                 gameController.startGame()
             }
             .frame(maxWidth: .infinity)
+            .foregroundColor(.primary)
             .padding()
-            .background(Color.black.opacity(0.5))
-            .cornerRadius(5)
-            .foregroundColor(.white)
+            .background(.ultraThinMaterial)
+            .cornerRadius(10)
             
             Spacer()
             
@@ -50,10 +50,10 @@ struct LevelSelectView: View {
                 gameController.showMainMenu()
             }
             .frame(maxWidth: .infinity)
+            .foregroundColor(.primary)
             .padding()
-            .background(Color.black.opacity(0.5))
-            .cornerRadius(5)
-            .foregroundColor(.white)
+            .background(.ultraThinMaterial)
+            .cornerRadius(10)
             
             Spacer()
         }

@@ -31,17 +31,17 @@ struct GameView : View {
                 HStack {
                     Text("Time elapsed")
                         .font(.title2)
-                        .foregroundColor(.white)
                         .padding()
                     Spacer()
                     Text(String(format: "%.1f", gameController.gameSeconds))
-                        .foregroundColor(.white)
                         .padding()
                         .font(.largeTitle)
                 }
-                .background(Color.black.opacity(0.5))
-                
+                .foregroundColor(.primary)
+                .background(.ultraThinMaterial)
                 .cornerRadius(10)
+                .foregroundColor(.primary)
+
                 
                 HStack {
                     Button("Select level") {
@@ -67,9 +67,9 @@ struct GameView : View {
                         )
                     }
                     .padding()
-                    .background(Color.black.opacity(0.5))
+                    .foregroundColor(.primary)
+                    .background(.ultraThinMaterial)
                     .cornerRadius(10)
-                    .foregroundColor(.white)
                         
                     Spacer()
                     
@@ -96,9 +96,9 @@ struct GameView : View {
                         )
                     }
                     .padding()
-                    .background(Color.black.opacity(0.5))
+                    .foregroundColor(.primary)
+                    .background(.ultraThinMaterial)
                     .cornerRadius(10)
-                    .foregroundColor(.white)
                         
                     Spacer()
                     
@@ -125,9 +125,9 @@ struct GameView : View {
                         )
                     }
                     .padding()
-                    .background(Color.black.opacity(0.5))
+                    .foregroundColor(.primary)
+                    .background(.ultraThinMaterial)
                     .cornerRadius(10)
-                    .foregroundColor(.white)
                         
                 }
                 Spacer()
@@ -141,7 +141,6 @@ struct GameView : View {
                         .multilineTextAlignment(.center)
                         .padding(5)
                         .foregroundColor(.white.opacity(0.5))
-                        .opacity(gameController.gameSeconds < 10 ? 1 : 0)
                 }
             }.padding()
         }

@@ -19,10 +19,10 @@ struct MainMenuView: View {
             Text("🍻 BeerPong AR 🍺")
                 .fixedSize(horizontal: false, vertical: true)
                 .font(.largeTitle)
+                .foregroundColor(.primary)
                 .padding()
-                .background(Color.black.opacity(0.5))
+                .background(.ultraThinMaterial)
                 .cornerRadius(10)
-                .foregroundColor(.white)
             }.padding(.top)
             Spacer()
             VStack{
@@ -31,19 +31,19 @@ struct MainMenuView: View {
                 }
                 .disabled(!gameController.objectsPlaced)
                 .frame(maxWidth: .infinity)
+                .foregroundColor(.primary)
                 .padding()
-                .background(Color.black.opacity(0.5))
+                .background(.ultraThinMaterial)
                 .cornerRadius(10)
-                .foregroundColor(.white)
                 
                 Button("Highscores") {
                     showHighScores.toggle()
                 }
                 .frame(maxWidth: .infinity)
+                .foregroundColor(.primary)
                 .padding()
-                .background(Color.black.opacity(0.5))
+                .background(.ultraThinMaterial)
                 .cornerRadius(10)
-                .foregroundColor(.white)
             }
             .padding(50)
             .frame(maxWidth: 250)
