@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ARViewContainer: UIViewRepresentable {
     @ObservedObject var gameController: GameController
-   
+    
     func makeUIView(context: Context) -> BeerPongView {
         let arView = BeerPongView(frame: .zero, gameController: gameController)
         arView.setup()
@@ -19,7 +19,6 @@ struct ARViewContainer: UIViewRepresentable {
     }
     
     func updateUIView(_ arView: BeerPongView, context: Context) {
-       
+        
     }
-
 }

@@ -17,15 +17,13 @@ struct GameView : View {
     @State var restartGameAlert = false
     @State var selectGameAlert = false
     
-        var body: some View {
+    var body: some View {
         ZStack {
-            VStack {
-                Spacer()
+            VStack (alignment: .center) {
                 Image("crosshair")
                     .resizable()
                     .frame(width: 50, height: 50, alignment: .center)
                     .colorMultiply(gameController.throwingEnabled ? .green : .red)
-                Spacer()
             }
             VStack {
                 HStack {
@@ -41,7 +39,6 @@ struct GameView : View {
                 .background(.ultraThinMaterial)
                 .cornerRadius(10)
                 .foregroundColor(.primary)
-
                 
                 HStack {
                     Button("Select level") {
@@ -70,7 +67,7 @@ struct GameView : View {
                     .foregroundColor(.primary)
                     .background(.ultraThinMaterial)
                     .cornerRadius(10)
-                        
+                    
                     Spacer()
                     
                     Button("Restart level") {
@@ -99,7 +96,7 @@ struct GameView : View {
                     .foregroundColor(.primary)
                     .background(.ultraThinMaterial)
                     .cornerRadius(10)
-                        
+                    
                     Spacer()
                     
                     Button("Exit") {
@@ -128,7 +125,7 @@ struct GameView : View {
                     .foregroundColor(.primary)
                     .background(.ultraThinMaterial)
                     .cornerRadius(10)
-                        
+                    
                 }
                 Spacer()
                 VStack {

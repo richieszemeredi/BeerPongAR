@@ -11,7 +11,7 @@ import CoreData
 struct HighScoresView: View {
     @Environment (\.presentationMode) var presentationMode
     @Environment(\.managedObjectContext) private var viewContext
-
+    
     @SectionedFetchRequest<String?, HighScore>(
         sectionIdentifier: \.level,
         sortDescriptors: [SortDescriptor(\.seconds, order: .forward)]
@@ -23,17 +23,17 @@ struct HighScoresView: View {
             VStack {
                 List(highScores) { section in
                     Section(header: Text(section.id?.capitalized ?? "uncategorised")) {
-                      ForEach(section) { record in
-                          HStack {
-                              Text(record.date?.formatted() ?? "Bad date")
-                              Spacer()
-                              Text(String(format: "%.1f", record.seconds))
-                          }
-                      }
-                      .onDelete { indexSet in
-                          deleteScore(section: Array(section), offsets: indexSet)
-                      }
-                  }
+                        ForEach(section) { record in
+                            HStack {
+                                Text(record.date?.formatted() ?? "Bad date")
+                                Spacer()
+                                Text(String(format: "%.1f", record.seconds))
+                            }
+                        }
+                        .onDelete { indexSet in
+                            deleteScore(section: Array(section), offsets: indexSet)
+                        }
+                    }
                 }.listStyle(.sidebar)
             }
             .navigationBarTitle(Text("High Scores"), displayMode: .inline)

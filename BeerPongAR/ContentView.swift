@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var gameController = GameController()
-
+    
     var body: some View {
         ZStack {
             ARViewContainer(gameController: gameController)
@@ -22,11 +22,11 @@ struct ContentView: View {
             if gameController.appState == .levelSelecting {
                 LevelSelectView(gameController: gameController)
             }
-
+            
             if gameController.appState == .gamePlaying {
                 GameView(gameController: gameController)
             }
-
+            
             if gameController.appState == .gameEnd {
                 EndView(gameController: gameController)
             }

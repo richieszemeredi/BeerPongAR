@@ -16,15 +16,18 @@ struct MainMenuView: View {
     var body: some View {
         VStack {
             VStack {
-            Text("🍻 BeerPong AR 🍺")
-                .fixedSize(horizontal: false, vertical: true)
-                .font(.largeTitle)
-                .foregroundColor(.primary)
-                .padding()
-                .background(.ultraThinMaterial)
-                .cornerRadius(10)
-            }.padding(.top)
+                Text("🍻 BeerPong AR 🍺")
+                    .fixedSize(horizontal: false, vertical: true)
+                    .font(.largeTitle)
+                    .foregroundColor(.primary)
+                    .padding()
+                    .background(.ultraThinMaterial)
+                    .cornerRadius(10)
+            }
+            .padding(.top)
+            
             Spacer()
+            
             VStack{
                 Button("Start game") {
                     gameController.selectLevel()
@@ -50,8 +53,10 @@ struct MainMenuView: View {
         }
         .padding()
         .sheet(isPresented: $showHighScores) {
-            HighScoresView().environment(\.managedObjectContext, persistenceController.container.viewContext)
-
+            HighScoresView().environment(
+                \.managedObjectContext,
+                 persistenceController.container.viewContext
+            )
         }
     }
 }

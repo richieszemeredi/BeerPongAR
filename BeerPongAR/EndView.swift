@@ -13,12 +13,12 @@ struct EndView: View {
     var body: some View {
         VStack {
             VStack {
-            Text("Game Over")
-                .font(.largeTitle)
-                .padding()
-                .foregroundColor(.primary)
-                .background(.ultraThinMaterial)
-                .cornerRadius(10)
+                Text("Game Over")
+                    .font(.largeTitle)
+                    .padding()
+                    .foregroundColor(.primary)
+                    .background(.ultraThinMaterial)
+                    .cornerRadius(10)
             }.padding(.top)
             Spacer()
             HStack {

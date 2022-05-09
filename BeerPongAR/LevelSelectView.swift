@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LevelSelectView: View {
     @ObservedObject var gameController: GameController
-
+    
     var body: some View {
         VStack{
             Spacer()
@@ -23,7 +23,7 @@ struct LevelSelectView: View {
             .padding()
             .background(.ultraThinMaterial)
             .cornerRadius(10)
-
+            
             Button("Medium") {
                 gameController.gameLevel = .medium
                 gameController.startGame()
@@ -59,7 +59,6 @@ struct LevelSelectView: View {
         }
         .padding(50)
         .frame(maxWidth: 250)
-
     }
 }
 
