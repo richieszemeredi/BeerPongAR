@@ -34,7 +34,7 @@ class BeerPongView: ARView, ARSessionDelegate {
         let config = ARWorldTrackingConfiguration()
         config.planeDetection = [.horizontal]
         session.run(config)
-        self.debugOptions = [.showFeaturePoints, .showPhysics, .showAnchorGeometry, .showWorldOrigin, .showAnchorOrigins, .showSceneUnderstanding]
+//        self.debugOptions = [.showFeaturePoints, .showPhysics, .showAnchorGeometry, .showWorldOrigin, .showAnchorOrigins, .showSceneUnderstanding]
         
         let coachingOverlay = ARCoachingOverlayView()
         coachingOverlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -51,7 +51,7 @@ class BeerPongView: ARView, ARSessionDelegate {
                 self.scene.anchors.append(self.gameController.gameAnchor)
                 self.gameController.objectsPlaced = true
             } catch {
-                fatalError("Couldn't load game scene")
+                print("Couldn't load game scene")
             }
         })
     }

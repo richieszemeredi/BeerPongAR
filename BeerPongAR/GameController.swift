@@ -114,7 +114,7 @@ class GameController: ObservableObject {
     }
     
     func cupDown() {
-        if self.cupNumber > 10 {
+        if self.cupNumber > 1 {
             self.cupNumber -= 1
         } else {
            endGame()
