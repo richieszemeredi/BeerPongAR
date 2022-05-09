@@ -41,9 +41,8 @@ class GameController: ObservableObject {
     
     func selectLevel() {
         self.throwingEnabled = false
-        self.appState = .levelSelecting
         self.gamePlaying = false
-        self.gameAnchor.notifications.resetToDefault.post()
+        self.appState = .levelSelecting
     }
     
     func initTimer() {
@@ -55,61 +54,65 @@ class GameController: ObservableObject {
     }
     
     func startGame() {
+        self.cupNumber = 6
+        self.gameSeconds = 0.0
+        self.appState = .gamePlaying
         switch self.gameLevel {
         case .easy:
-            self.gameAnchor.notifications.positionEasyLevel.post()
+            self.gameAnchor.notifications.setupEasyLevel.post()
             break
         case .medium:
-            self.gameAnchor.notifications.positionMediumLevel.post()
+            self.gameAnchor.notifications.setupMediumLevel.post()
             break
         case .hard:
-            self.gameAnchor.notifications.positionHardLevel.post()
+            self.gameAnchor.notifications.setupHardLevel.post()
             break
         }
-        self.cupNumber = 6
-        self.appState = .gamePlaying
-        self.gameSeconds = 0.0
-        self.gameAnchor.notifications.revealCups.post()
-        self.gameAnchor.notifications.revealTable.post()
-        self.throwingEnabled = true
-        self.gamePlaying = true
+        self.gameAnchor.notifications.show.post()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            self.throwingEnabled = true
+            self.gamePlaying = true
+        }
     }
     
     func pauseGame() {
         self.throwingEnabled = false
         self.gamePlaying = false
+        self.gameAnchor.notifications.hide.post()
+
     }
     
     func resumeGame() {
         self.throwingEnabled = true
         self.gamePlaying = true
+        self.gameAnchor.notifications.show.post()
     }
     
     func endGame() {
-        self.throwingEnabled = false
-        self.gamePlaying = false
+        pauseGame()
         self.appState = .gameEnd
-        self.gameAnchor.notifications.resetToDefault.post()
-        self.gameAnchor.notifications.hideTable.post()
-        let highScore = HighScore(context: moc)
-        highScore.date = Date()
-        highScore.id = UUID()
-        highScore.seconds = gameSeconds
-        highScore.level = "\(self.gameLevel)"
-        try? moc.save()
+        do {
+            let highScore = HighScore(context: moc)
+            highScore.date = Date()
+            highScore.id = UUID()
+            highScore.seconds = gameSeconds
+            highScore.level = "\(self.gameLevel)"
+            try moc.save()
+        } catch let error {
+            print(error)
+        }
+        
+        
     }
     
     func showMainMenu() {
-        self.gameAnchor.notifications.hideCups.post()
-        self.gameAnchor.notifications.hideTable.post()
-        self.gameAnchor.notifications.resetToDefault.post()
         self.throwingEnabled = false
         self.gamePlaying = false
         self.appState = .mainMenu
     }
     
     func cupDown() {
-        if self.cupNumber > 1 {
+        if self.cupNumber > 10 {
             self.cupNumber -= 1
         } else {
            endGame()
