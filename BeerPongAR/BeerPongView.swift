@@ -147,10 +147,9 @@ class BeerPongView: ARView, ARSessionDelegate {
                 gameController.throwTap.touchDown()
             }
             if gestureRecognizer.state == .ended {
-                var ballForce = Float(gameController.throwTap.getTimeReset() * 0.35)
-                if (ballForce > 1) {
-                    ballForce = 1
-                }
+                gameController.throwTap.touchUp()
+                
+                let ballForce = Float(gameController.throwTap.getTime() * 0.35)
                 if (ballForce > 0.1){
                     throwBall(force: ballForce)
                 }

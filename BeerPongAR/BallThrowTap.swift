@@ -17,32 +17,36 @@ class BallThrowTap: ObservableObject {
     private let MAX_TIME = 1.0
     
     private var touchDownTime = 0.0
+    private var touchUpTime = 0.0
+
     private var throwing = false
     
     public func initTimer() {
-        let _ = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
-            self.time += 0.01
+        Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
+            self.time = self.time + 0.01
             if self.throwing {
-                self.currentTime = self.time - self.touchDownTime
+                self.currentTime = CFAbsoluteTimeGetCurrent() - self.touchDownTime
                 self.setColor()
             }
         }
     }
     public func touchDown() {
         self.throwing = true
-        self.touchDownTime = self.time
+        self.touchDownTime = CFAbsoluteTimeGetCurrent()
     }
     
-    public func getTimeReset() -> Double {
+    public func touchUp() {
         self.throwing = false
-        var toReturn = 0.0
-        if self.currentTime > self.MAX_TIME {
-            toReturn = self.MAX_TIME
-        } else {
-            toReturn = self.currentTime
+        self.touchUpTime = CFAbsoluteTimeGetCurrent()
+    }
+    
+    public func getTime() -> Double {
+        var touchTime = self.touchUpTime - self.touchDownTime
+        if touchTime > MAX_TIME {
+            touchTime = MAX_TIME
         }
         resetTime()
-        return toReturn
+        return touchTime
     }
     
     private func resetTime() {
