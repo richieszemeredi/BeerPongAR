@@ -83,9 +83,11 @@ class GameController: ObservableObject {
     }
     
     func resumeGame() {
-        self.throwingEnabled = true
-        self.gamePlaying = true
         self.gameAnchor.notifications.show.post()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.throwingEnabled = true
+            self.gamePlaying = true
+        }
     }
     
     func endGame() {
