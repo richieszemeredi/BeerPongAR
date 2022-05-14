@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		DB2CFEB0281D8362001EBB11 /* HighScoresModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DB2CFEAE281D8362001EBB11 /* HighScoresModel.xcdatamodeld */; };
 		DB2CFEB2281D841C001EBB11 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2CFEB1281D841C001EBB11 /* Persistence.swift */; };
-		DB2CFEB3281D841C001EBB11 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2CFEB1281D841C001EBB11 /* Persistence.swift */; };
-		DB2CFEB4281D841C001EBB11 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2CFEB1281D841C001EBB11 /* Persistence.swift */; };
 		DB3142BE2815948C00DEC13D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3142BD2815948C00DEC13D /* ContentView.swift */; };
 		DB3142C02815A19F00DEC13D /* ARViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3142BF2815A19F00DEC13D /* ARViewContainer.swift */; };
 		DB3142C22815B5BC00DEC13D /* LevelSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3142C12815B5BC00DEC13D /* LevelSelectView.swift */; };
@@ -20,36 +18,14 @@
 		DB42324A2811DF2C004B5946 /* BallThrowTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4232492811DF2C004B5946 /* BallThrowTap.swift */; };
 		DB42324C2811F49A004B5946 /* BeerPongView+Coaching.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB42324B2811F49A004B5946 /* BeerPongView+Coaching.swift */; };
 		DB67AC1D280D834F00F4A11C /* CupTester.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = DB67AC1C280D820900F4A11C /* CupTester.rcproject */; };
-		DB67AC1E280D835000F4A11C /* CupTester.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = DB67AC1C280D820900F4A11C /* CupTester.rcproject */; };
-		DB67AC1F280D835000F4A11C /* CupTester.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = DB67AC1C280D820900F4A11C /* CupTester.rcproject */; };
 		DBAEE211281305A1003C4CC4 /* EndView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAEE210281305A1003C4CC4 /* EndView.swift */; };
 		DBB124C527DE5B2C0024C53F /* BeerPongARApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB124C427DE5B2C0024C53F /* BeerPongARApp.swift */; };
 		DBB124C727DE5B2C0024C53F /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB124C627DE5B2C0024C53F /* GameView.swift */; };
 		DBB124CB27DE5B2D0024C53F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBB124CA27DE5B2D0024C53F /* Assets.xcassets */; };
 		DBB124CE27DE5B2D0024C53F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBB124CD27DE5B2D0024C53F /* Preview Assets.xcassets */; };
-		DBB124D827DE5B2D0024C53F /* BeerPongARTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB124D727DE5B2D0024C53F /* BeerPongARTests.swift */; };
-		DBB124E227DE5B2D0024C53F /* BeerPongARUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB124E127DE5B2D0024C53F /* BeerPongARUITests.swift */; };
-		DBB124E427DE5B2D0024C53F /* BeerPongARUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB124E327DE5B2D0024C53F /* BeerPongARUITestsLaunchTests.swift */; };
 		DBB501A427F0858D0092F8EC /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB501A327F0858D0092F8EC /* MainMenuView.swift */; };
 		DBCC329F280DD2C9001C8C81 /* HighScoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCC329E280DD2C9001C8C81 /* HighScoresView.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		DBB124D427DE5B2D0024C53F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DBB124B927DE5B2C0024C53F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DBB124C027DE5B2C0024C53F;
-			remoteInfo = BeerPongAR;
-		};
-		DBB124DE27DE5B2D0024C53F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DBB124B927DE5B2C0024C53F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DBB124C027DE5B2C0024C53F;
-			remoteInfo = BeerPongAR;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		DB2CFEAF281D8362001EBB11 /* HighScoresModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HighScoresModel.xcdatamodel; sourceTree = "<group>"; };
@@ -70,31 +46,12 @@
 		DBB124C627DE5B2C0024C53F /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		DBB124CA27DE5B2D0024C53F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DBB124CD27DE5B2D0024C53F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		DBB124D327DE5B2D0024C53F /* BeerPongARTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeerPongARTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DBB124D727DE5B2D0024C53F /* BeerPongARTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerPongARTests.swift; sourceTree = "<group>"; };
-		DBB124DD27DE5B2D0024C53F /* BeerPongARUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeerPongARUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DBB124E127DE5B2D0024C53F /* BeerPongARUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerPongARUITests.swift; sourceTree = "<group>"; };
-		DBB124E327DE5B2D0024C53F /* BeerPongARUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerPongARUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		DBB501A327F0858D0092F8EC /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		DBCC329E280DD2C9001C8C81 /* HighScoresView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScoresView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		DBB124BE27DE5B2C0024C53F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DBB124D027DE5B2D0024C53F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DBB124DA27DE5B2D0024C53F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -108,8 +65,6 @@
 			isa = PBXGroup;
 			children = (
 				DBB124C327DE5B2C0024C53F /* BeerPongAR */,
-				DBB124D627DE5B2D0024C53F /* BeerPongARTests */,
-				DBB124E027DE5B2D0024C53F /* BeerPongARUITests */,
 				DBB124C227DE5B2C0024C53F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -118,8 +73,6 @@
 			isa = PBXGroup;
 			children = (
 				DBB124C127DE5B2C0024C53F /* BeerPongAR.app */,
-				DBB124D327DE5B2D0024C53F /* BeerPongARTests.xctest */,
-				DBB124DD27DE5B2D0024C53F /* BeerPongARUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -158,23 +111,6 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		DBB124D627DE5B2D0024C53F /* BeerPongARTests */ = {
-			isa = PBXGroup;
-			children = (
-				DBB124D727DE5B2D0024C53F /* BeerPongARTests.swift */,
-			);
-			path = BeerPongARTests;
-			sourceTree = "<group>";
-		};
-		DBB124E027DE5B2D0024C53F /* BeerPongARUITests */ = {
-			isa = PBXGroup;
-			children = (
-				DBB124E127DE5B2D0024C53F /* BeerPongARUITests.swift */,
-				DBB124E327DE5B2D0024C53F /* BeerPongARUITestsLaunchTests.swift */,
-			);
-			path = BeerPongARUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -197,42 +133,6 @@
 			productReference = DBB124C127DE5B2C0024C53F /* BeerPongAR.app */;
 			productType = "com.apple.product-type.application";
 		};
-		DBB124D227DE5B2D0024C53F /* BeerPongARTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DBB124EA27DE5B2D0024C53F /* Build configuration list for PBXNativeTarget "BeerPongARTests" */;
-			buildPhases = (
-				DBB124CF27DE5B2D0024C53F /* Sources */,
-				DBB124D027DE5B2D0024C53F /* Frameworks */,
-				DBB124D127DE5B2D0024C53F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				DBB124D527DE5B2D0024C53F /* PBXTargetDependency */,
-			);
-			name = BeerPongARTests;
-			productName = BeerPongARTests;
-			productReference = DBB124D327DE5B2D0024C53F /* BeerPongARTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		DBB124DC27DE5B2D0024C53F /* BeerPongARUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DBB124ED27DE5B2D0024C53F /* Build configuration list for PBXNativeTarget "BeerPongARUITests" */;
-			buildPhases = (
-				DBB124D927DE5B2D0024C53F /* Sources */,
-				DBB124DA27DE5B2D0024C53F /* Frameworks */,
-				DBB124DB27DE5B2D0024C53F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				DBB124DF27DE5B2D0024C53F /* PBXTargetDependency */,
-			);
-			name = BeerPongARUITests;
-			productName = BeerPongARUITests;
-			productReference = DBB124DD27DE5B2D0024C53F /* BeerPongARUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -245,14 +145,6 @@
 				TargetAttributes = {
 					DBB124C027DE5B2C0024C53F = {
 						CreatedOnToolsVersion = 13.2.1;
-					};
-					DBB124D227DE5B2D0024C53F = {
-						CreatedOnToolsVersion = 13.2.1;
-						TestTargetID = DBB124C027DE5B2C0024C53F;
-					};
-					DBB124DC27DE5B2D0024C53F = {
-						CreatedOnToolsVersion = 13.2.1;
-						TestTargetID = DBB124C027DE5B2C0024C53F;
 					};
 				};
 			};
@@ -272,8 +164,6 @@
 			projectRoot = "";
 			targets = (
 				DBB124C027DE5B2C0024C53F /* BeerPongAR */,
-				DBB124D227DE5B2D0024C53F /* BeerPongARTests */,
-				DBB124DC27DE5B2D0024C53F /* BeerPongARUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -285,20 +175,6 @@
 			files = (
 				DBB124CE27DE5B2D0024C53F /* Preview Assets.xcassets in Resources */,
 				DBB124CB27DE5B2D0024C53F /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DBB124D127DE5B2D0024C53F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DBB124DB27DE5B2D0024C53F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,41 +204,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DBB124CF27DE5B2D0024C53F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DB2CFEB3281D841C001EBB11 /* Persistence.swift in Sources */,
-				DB67AC1E280D835000F4A11C /* CupTester.rcproject in Sources */,
-				DBB124D827DE5B2D0024C53F /* BeerPongARTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DBB124D927DE5B2D0024C53F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DB67AC1F280D835000F4A11C /* CupTester.rcproject in Sources */,
-				DB2CFEB4281D841C001EBB11 /* Persistence.swift in Sources */,
-				DBB124E227DE5B2D0024C53F /* BeerPongARUITests.swift in Sources */,
-				DBB124E427DE5B2D0024C53F /* BeerPongARUITestsLaunchTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		DBB124D527DE5B2D0024C53F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DBB124C027DE5B2C0024C53F /* BeerPongAR */;
-			targetProxy = DBB124D427DE5B2D0024C53F /* PBXContainerItemProxy */;
-		};
-		DBB124DF27DE5B2D0024C53F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DBB124C027DE5B2C0024C53F /* BeerPongAR */;
-			targetProxy = DBB124DE27DE5B2D0024C53F /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		DBB124E527DE5B2D0024C53F /* Debug */ = {
@@ -563,82 +405,6 @@
 			};
 			name = Release;
 		};
-		DBB124EB27DE5B2D0024C53F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7Z4JU8CLM2;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = tech.premble.BeerPongARTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BeerPongAR.app/BeerPongAR";
-			};
-			name = Debug;
-		};
-		DBB124EC27DE5B2D0024C53F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7Z4JU8CLM2;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = tech.premble.BeerPongARTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BeerPongAR.app/BeerPongAR";
-			};
-			name = Release;
-		};
-		DBB124EE27DE5B2D0024C53F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7Z4JU8CLM2;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = tech.premble.BeerPongARUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = BeerPongAR;
-			};
-			name = Debug;
-		};
-		DBB124EF27DE5B2D0024C53F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7Z4JU8CLM2;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = tech.premble.BeerPongARUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = BeerPongAR;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -656,24 +422,6 @@
 			buildConfigurations = (
 				DBB124E827DE5B2D0024C53F /* Debug */,
 				DBB124E927DE5B2D0024C53F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DBB124EA27DE5B2D0024C53F /* Build configuration list for PBXNativeTarget "BeerPongARTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DBB124EB27DE5B2D0024C53F /* Debug */,
-				DBB124EC27DE5B2D0024C53F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DBB124ED27DE5B2D0024C53F /* Build configuration list for PBXNativeTarget "BeerPongARUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DBB124EE27DE5B2D0024C53F /* Debug */,
-				DBB124EF27DE5B2D0024C53F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
